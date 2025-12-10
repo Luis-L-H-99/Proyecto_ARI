@@ -11,5 +11,5 @@ export const routes: Routes = [
     { path: 'Dashboard', component: Dasboard },
     { path: 'Reproductor', component: Reproductor },
     { path: '', redirectTo: 'Login', pathMatch: 'full'},
-    { path: '', redirectTo: 'Login'}
+    { path: '##', redirectTo: 'Login'}
 ];
