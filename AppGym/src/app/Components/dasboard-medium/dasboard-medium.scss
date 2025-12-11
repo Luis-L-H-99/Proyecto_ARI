@@ -20,7 +20,7 @@ body {
 .dashboard-container {
   min-height: 100vh;
   padding: 2rem;
-  background: radial-gradient(circle, #300000, #000000);
+  background: linear-gradient(to bottom, #000000 10%, #FF0000 200%);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -29,7 +29,7 @@ body {
 /* CONTENEDOR PRINCIPAL (ranking y calendario) */
 .dashboard-row {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;  
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
@@ -40,13 +40,14 @@ body {
 .ranking-card {
   background: #FFFFFF;
   border-radius: 25px;
-  padding: 2rem;
-  width: 820px;
-  max-width: 100%;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 0;         
+  overflow-x: hidden;
+  max-height: none;
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* Título del ranking */
 .title {
@@ -56,13 +57,12 @@ body {
   color: #000000;
 }
 
-/* Lidta de Ranking  */
+/* Lista de Ranking en fila  */
 .ranking-list {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
-
 
 /* Usuario individual */
 .ranking-item {
@@ -97,10 +97,12 @@ body {
   background: #FFFFFF;
   border-radius: 25px;
   padding: 1.5rem;
-  width: 340px;
+  width: 340px; 
+  flex-shrink: 0;  
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 
 /* Título del mes */
 .calendar-card h3 {
@@ -146,32 +148,75 @@ body {
 
 /* RESPONSIVE */
 
-/* Pantallas medianas y pequeñas */
+/* Tablets y pantallas medianas */
 @media (max-width: 900px) {
+
+  /* El ranking se hace más bajo y aparece scroll interno */
   .ranking-card {
-    width: 65%;
-    padding: 1.5rem;
+    max-height: 360px;
+    padding: 1.2rem;
+    overflow-y: auto;  
   }
 
+  /* El calendario se mantiene firme, solo un poco más compacto */
   .calendar-card {
-    width: 35%;
+    width: 320px;
   }
 
+  /* Los items del ranking se pueden acomodar mejor */
   .ranking-list {
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+   /* cada usuario en fila */
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  /* trofeos a la derecha */
+  .trophies {
+    margin-left: auto;
   }
 }
 
-/* Móviles muy pequeños */
+
+/* Celulares */
 @media (max-width: 600px) {
+
+  /* Más compacto todavía, pero misma línea */
   .ranking-card {
-    width: 70%;
+    max-height: 300px;
+    padding: 1rem;
+    overflow-y: auto; 
   }
 
+  /* Calendario sigue intacto, no se deforma */
   .calendar-card {
-    width: 30%;
+    width: 280px;
   }
+
+  /* Avatares un poco más pequeños */
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Texto ligeramente más compacto */
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .position {
+    font-size: 0.85rem;
+  }
+
+  .trophies {
+    font-size: 0.85rem;
+  }
+  
 }
 
 /* CONTROLES CALENDARIO */
@@ -245,3 +290,18 @@ body {
   cursor: default;
   background: transparent;
 }
+
+/* Scroll simple y redondeado */
+.ranking-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ranking-card::-webkit-scrollbar-track {
+  border-radius: 12px;
+}
+
+.ranking-card::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 12px;
+}
+
