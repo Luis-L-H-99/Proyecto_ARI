@@ -28,7 +28,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },"src/Assets"
+              },"src/assets"
             ],
             "styles": [
               "src/styles.scss"

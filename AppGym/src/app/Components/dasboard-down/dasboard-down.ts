@@ -16,19 +16,19 @@ export class DasboardDown {
  videos = [
     {
       title : 'Quema grasa',
-      img: '/Assets/Images/Dashboard/Grupo 40.png',
+      img: '/assets/images/dashboard/Grupo 40.png',
     },
     {
       title: 'Full Body',
-      img: '/Assets/Images/Dashboard/Grupo 41.png',
+      img: '/assets/images/dashboard/Grupo 41.png',
     },
     {
       title: 'Fuerza y Resistencia',
-      img: '/Assets/Images/Dashboard/Grupo 42.png',
+      img: '/assets/images/dashboard/Grupo 42.png',
     },
     {
       title: 'Cardio Power 30',
-      img: '/Assets/Images/Dashboard/Grupo 43.png',
+      img: '/assets/images/dashboard/Grupo 43.png',
     },
   ];
 }
