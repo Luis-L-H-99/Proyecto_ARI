@@ -13,9 +13,11 @@
 
 /* Título de la página */
 .title {
-  color: white;
+  color: rgba(255, 255, 255, 0.966);
   font-size: 38px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  margin-left: 80px;
+  margin-top: 1px;  
 }
 
 /* Tarjeta de cada plan */
@@ -39,7 +41,7 @@
 }
 
 .red {
-  color: #e00000;
+  color: #ff0000;
 }
 
 .black {
@@ -63,7 +65,7 @@
 .price-red {
   font-size: 32px;
   font-weight: bold;
-  color: #cc0000;
+  color: #ff0000;
   /*display: block;*/
 }
 
@@ -75,7 +77,7 @@
 /* Botón contratar */
 .btn-contratar {
   margin-top: 20px;
-  background: #cc0000;
+  background: #ff0000;
   border: none;
   color: white;
   padding: 10px 22px;
@@ -99,17 +101,17 @@ input {
   width: 100%;
   padding: 5px;
   border-radius: 100px;
-  border: 1px solid #cc0000;
+  border: 1px solid #ff0000;
   margin-bottom: 20px;
   outline: none;
-  background-color: #cc0000;
+  background-color: #ff0000;
   
 }
 
 
 
 ::placeholder{
-  color: rgb(163, 156, 156);
+  color: rgb(202, 202, 202);
 }
 
 /* Fila 50/50 */
@@ -140,21 +142,21 @@ input {
 }
 
 .btn-cancelar:hover {
-  background: #a30000;
+  background: #cc0000;
 }
 
 .btn-pagar:hover {
-  background: #a30000;
+  background: #cc0000;
 }
 
 
 .btn-cancelar {
-  background: #cc0000;
+  background: #ff0000;
   color: white;
 }
 
 .btn-pagar {
-  background: #cc0000;
+  background: #ff0000;
   color: white;
 }
 
@@ -177,6 +179,10 @@ input {
 }
 
 @media (max-width: 600px) {
+  .member-logo {
+    width: 120px;
+    height: 60px;
+  }
   .topbar {
     padding: 10px 10px;
   }
@@ -184,16 +190,21 @@ input {
   .username {
     max-width: 90px;
   }
+
+  .title{
+  margin-left: 10px;
+  }
 }
 
 /* */
 /* BARRA SUPERIOR */
 .topbar {
   /*width: 100%;*/
-  padding: 1px 1px;
+  padding: 1px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+   padding-bottom: 0px;
 }
 
 
@@ -204,8 +215,8 @@ input {
 }
 
 .member-logo {
-  height: 100px;
-  width: 200px;
+  height: 70px;
+  width: 150px;
   object-fit: contain;
   
 }
@@ -222,15 +233,15 @@ input {
 }
 
 .perfil-ico {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   /*border: 2px solid white;*/
 }
 
 .username {
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   white-space: nowrap;
   overflow: hidden;           

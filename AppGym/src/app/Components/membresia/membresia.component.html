@@ -8,14 +8,12 @@
 
       <div class="topbar-right">
         <img src="/Assets/Images/Membresia/perfil.png" class="perfil-ico" alt="perfil">
-        <span class="username">Mario Montero</span>
+        <span class="username">Jorge Armando</span>
       </div>
     </div>
-
+    
+      <h1 class="title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">Planes</h1>
   <div class="page-container">
-
-    <h1 class="title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">Planes</h1>
-
     <div
       class="plan-card"
       *ngFor="let plan of plans"
@@ -23,9 +21,9 @@
     >
       <!-- Título -->
       <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
-        <span class="black">{{ plan.name.split(' ')[0] }}</span>
+        <span class="black">{{ plan.name.split(' ')[0] }}</span>&nbsp;
          <span class="red">{{ plan.name.split(' ')[1] }}</span>
-</h2>
+    </h2>
 
 
       <!-- Descripción -->
@@ -40,34 +38,34 @@
       <!-- BOTÓN CONTRATAR -->
       <button
         *ngIf="selectedPlan !== plan.id"
-        class="btn-contratar" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
+        class="btn-contratar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }"
         (click)="selectPlan(plan.id)"
       >
         Contratar
       </button>
 
       <!-- FORMULARIO -->
-      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
+      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">
         <label>Nombre completo:</label>
-        <input type="text" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
+        <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
 
         <label>Número de tarjeta:</label>
-        <input type="text" [(ngModel)]="formData.cardNumber" placeholder="Ingresa tu número de tarjeta">
+        <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.cardNumber" placeholder="Ingresa tu número de tarjeta">
 
         <div class="row">
           <div class="column">
             <label>Fecha de expiración</label>
-            <input type="text" [(ngModel)]="formData.expiration" placeholder="MM/AA">
+            <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.expiration" placeholder="01/26">
           </div>
-          <div class="column">
+          <div class="column"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
             <label>CVV</label>
-            <input type="text" [(ngModel)]="formData.cvv" placeholder="CVV">
+            <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.cvv" placeholder="CVV">
           </div>
         </div>
 
         <div class="buttons">
-          <button class="btn-cancelar" (click)="cancel()">Cancelar</button>
-          <button class="btn-pagar" (click)="pay()">Pagar</button>
+          <button class="btn-cancelar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }" (click)="cancel()">Cancelar</button>
+          <button class="btn-pagar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }" (click)="pay()">Pagar</button>
         </div>
       </div>
 
