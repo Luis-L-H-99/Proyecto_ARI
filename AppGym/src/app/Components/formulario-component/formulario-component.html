@@ -1,1 +1,82 @@
-<p>formulario-component works!</p>
+<div class="registro-container">
+
+  <!-- Logo superior izquierda -->
+  <div class="logo-container">
+  <img src="assets/images/Formulario/FitManager.png" class="logo" alt="FitManager">
+    </div>
+
+  <h1 class="titulo">Registro</h1>
+
+  <form class="formulario">
+
+    <div class="campo">
+      <label>Nombre</label>
+      <input type="text" placeholder="Ingresa tu nombre:">
+    </div>
+
+    <div class="campo">
+      <label>Apellido</label>
+      <input type="text" placeholder="Ingresa tu apellido:">
+    </div>
+
+    <div class="campo">
+      <label>Edad</label>
+      <input type="number" placeholder="Ingresa tu edad:">
+    </div>
+
+    <div class="campo">
+      <label>Estatura</label>
+      <input type="number" placeholder="Ingresa tu estatura en cm:">
+    </div>
+
+    <div class="campo">
+      <label>Peso</label>
+      <input type="number" placeholder="Ingresa tu peso, ejemplo 65.7:">
+    </div>
+
+    <!-- SELECT: Tipo de cuerpo -->
+    <div class="campo">
+      <label>Tipo de cuerpo</label>
+      <select>
+        <option value="" disabled selected>Selecciona tu tipo de cuerpo</option>
+        <option>Ectomorfo</option>
+        <option>Mesomorfo</option>
+        <option>Endomorfo</option>
+      </select>
+    </div>
+
+    <!-- SELECT: Objetivo -->
+    <div class="campo">
+      <label>Objetivo</label>
+      <select>
+        <option value="" disabled selected>Selecciona tu objetivo</option>
+        <option>Subir masa muscular</option>
+        <option>Bajar de peso</option>
+        <option>Tonificar</option>
+        <option>Mantenerse en forma</option>
+      </select>
+    </div>
+
+    <!-- SELECT: Frecuencia -->
+    <div class="campo">
+      <label>Frecuencia de asistencia</label>
+      <select>
+        <option value="" disabled selected>Selecciona tu frecuencia</option>
+        <option>1 vez por semana</option>
+        <option>2 veces por semana</option>
+        <option>3 veces por semana</option>
+        <option>4 veces por semana</option>
+        <option>5 veces por semana</option>
+        <option>Diario</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Alimentación</label>
+      <input type="text" placeholder="Tipo de alimentación:">
+    </div>
+
+    <button class="btn-registro">Completar registro</button>
+
+  </form>
+</div>
