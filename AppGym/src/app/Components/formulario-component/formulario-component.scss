@@ -133,23 +133,10 @@
   background-color: #ff3030; 
 }
 
-/* Ajustes responsive */
 @media (max-width: 500px) {
-  .titulo {
-    font-size: 40px;
-  }
-
   .btn-registro {
-    width: 100%;
-    font-size: 24px;
-    padding: 14px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: #fff;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    width: 100%;      /* Se adapta al ancho */
+    font-size: 24px;  /* Solo reduce tamaño */
+    padding: 14px 30px;
   }
 }
