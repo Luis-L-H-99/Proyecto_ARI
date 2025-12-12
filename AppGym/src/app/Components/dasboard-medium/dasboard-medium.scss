@@ -18,9 +18,9 @@ body {
 
 /* FONDO GENERAL */
 .dashboard-container {
-  min-height: 100vh;
+  min-height: auto;
   padding: 2rem;
-  background: linear-gradient(to bottom, #000000 10%, #FF0000 200%);
+  background: none;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -29,11 +29,12 @@ body {
 /* CONTENEDOR PRINCIPAL (ranking y calendario) */
 .dashboard-row {
   display: flex;
-  align-items: stretch;  
+  align-items: stretch;
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* PANTALLA GRANDE → fila normal */
+  justify-content: center;
 }
 
 /* RECUADRO RANKING */
@@ -217,6 +218,28 @@ body {
     font-size: 0.85rem;
   }
   
+}
+
+/* CUANDO LA PANTALLA SEA MUY CHICA */
+@media (max-width: 750px) {
+
+  /* Cambia la fila a columna (
+  
+  
+  ranking arriba, calendario abajo) */
+  .dashboard-row {
+    flex-direction: column;
+    align-items: center;          
+    gap: 1.5rem;
+  }
+
+  /* El ranking deberá usar el MISMO ancho que el calendario */
+  .ranking-card {
+    width: 280px !important;     
+    max-height: 300px;            
+    overflow-y: auto;
+  }
+
 }
 
 /* CONTROLES CALENDARIO */
