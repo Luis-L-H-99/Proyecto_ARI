@@ -1,0 +1,54 @@
+.tarjeta-container {
+  display: grid;
+  gap: 15px;
+  padding: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
+}
+
+.tarjeta {
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 6px;
+  display: flex;
+  gap: 26px;
+  align-items: center;
+}
+
+.tarjeta-salir {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  align-items: center;
+  padding: 50px;
+  flex-direction: column;
+  display: flex;
+}
+
+.icon {
+  height: 100px;
+  width: 100px;
+}
+
+.icon-salir {
+  height: 60px;
+  width: 165px;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta-salir:hover {
+  transform: translateY(-5px);
+}
+
+.titulos {
+  font-size: 30px;
+
+}
+
+.value {
+    text-align: center;
+    font-weight: bold;
+    color: #FF0000;
+    font-size: 25px;
+}
