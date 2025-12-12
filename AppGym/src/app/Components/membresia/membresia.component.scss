@@ -82,7 +82,7 @@
   color: white;
   padding: 10px 22px;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -111,7 +111,7 @@ input {
 
 
 ::placeholder{
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.692);
 }
 
 /* Fila 50/50 */
@@ -177,28 +177,84 @@ input {
 }
 
 @media (max-width: 600px) {
+
+  /* Hace que la topbar se adapte al ancho y evite empalmes */
+  .topbar {
+   /* padding: 10px 10px;*/
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* logo, no debe ocupar demasiado espacio */
   .member-logo {
     width: 120px;
-    height: 60px;
+    height: auto;
+    max-width: 45%;         /* ← IMPIDE que invada el espacio del usuario */
   }
+
+  /* USERNAME: evita desbordes */
+  .username {
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .perfil-ico {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Contenedor lado derecho */
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 50%;         /* ← LIMITE para que no empuje al logo */
+  }
+
+  .title {
+    margin-left: 10px;
+  }
+}
+
+/*/*
+/* responsive seccion topbar */
+@media (max-width: 430px) {
+
   .topbar {
-    padding: 10px 10px;
+    padding: 5px 5px;
+  }
+
+  .member-logo {
+    width: 110px;
+    max-width: 42%;
+  }
+
+  .topbar-right {
+    gap: 5px;
+    max-width: 50%;
   }
 
   .username {
-    max-width: 90px;
+    max-width: 70px;
+    font-size: 14px;
   }
 
-  .title{
-  margin-left: 10px;
+  .perfil-ico {
+    width: 30px;
+    height: 30px;
   }
 }
+*/*/
 
 /* */
 /* BARRA SUPERIOR */
 .topbar {
   /*width: 100%;*/
-  padding: 1px 10px;
+  padding: 1px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -214,7 +270,7 @@ input {
 
 .member-logo {
   height: 70px;
-  width: 150px;
+  width: 200px;
   object-fit: contain;
   
 }
@@ -239,7 +295,7 @@ input {
 }
 
 .username {
-  font-size: 20px;
+ /* font-size: 20px;*/
   color: white;
   white-space: nowrap;
   overflow: hidden;           
