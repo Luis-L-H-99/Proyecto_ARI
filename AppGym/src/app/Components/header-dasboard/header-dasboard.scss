@@ -1,0 +1,158 @@
+/* ===========================
+        HEADER
+=========================== */
+
+.header-container {
+  width: 100%;
+  background: #000000;        /* Fondo correcto */
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* LOGO */
+.logo-text {
+  height: 13px;     /* tamaño pequeño */
+  width: auto;      /* mantiene proporción */
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text img {
+  height: 35px;     /* icono pequeño */
+  width: auto;      /* mantiene proporción */
+  object-fit: contain;
+  display: block;
+}
+
+
+.fit {
+  color: #FF0000;
+}
+
+.manager {
+  color: #FFFFFF;
+}
+
+/* PERFIL */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ICONO CIRCULAR */
+.profile-icon {
+  width: 48px;
+  height: 48px;
+  background: #FF0000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-icon img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+/* TEXTOS DERECHA */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.profile-role {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #FF0000;
+  font-weight: 600;
+}
+
+/* ===========================
+          RESPONSIVE
+=========================== */
+
+/* Tablets y móviles grandes */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 10px 16px;
+  }
+
+  .logo-text {
+    font-size: 28px;
+  }
+
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .profile-role {
+    font-size: 12px;
+  }
+
+  .profile-section {
+    gap: 10px;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 12px;
+    row-gap: 8px;
+  }
+
+  .logo-text {
+    font-size: 20px; /* Subido para que sea legible */
+  }
+
+  .profile-section {
+    gap: 8px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profile-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-name {
+    font-size: 14px;
+  }
+
+  .profile-role {
+    font-size: 12px;
+  }
+}

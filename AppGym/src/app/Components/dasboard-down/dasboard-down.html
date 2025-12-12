@@ -1,1 +1,7 @@
-<p>dasboard-down works!</p>
+<div class="videos-container"> 
+    <h2 class="titulo-lista" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">Lista de videos</h2> 
+    <div class="videos-grid"> 
+        <div class="video-card" *ngFor="let video of videos"> 
+            <img [src]="video.img" alt="{{ video.title }}" /> 
+            <div class="video-title" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">{{ video.title }}</div> 
+        </div> </div> </div>
