@@ -1,1 +1,65 @@
-<p>login-down works!</p>
+<h1 class="titulo" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">Planes</h1>
+<div class="page-wrapper">
+  <div class="planes-container">
+
+    <!-- PLAN FitStart -->
+    <div class="plan-card">
+      <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        Plan <span class="rojo">FitStart</span>
+      </h2>
+
+      <p class="plan-desc" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+        Ideal para usuarios principiantes que quieren iniciar una vida activa.
+        Incluye acceso a rutinas básicas, medición de oxigenación semanal 
+        y visualización del ranking general de ejercicios.
+      </p>
+
+      <p class="plan-price" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        <span class="precio-rojo">$199</span> 
+        <span class="precio-negro">MXN / mes</span>
+      </p>
+    </div>
+
+    <!-- PLAN PowerPlus -->
+    <div class="plan-card">
+      <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        Plan <span class="rojo">PowerPlus</span>
+      </h2>
+
+      <p class="plan-desc" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+        Pensado para personas que ya entrenan de manera regular. Incluye rutinas
+        personalizadas por objetivo, monitoreo avanzado de oxigenación, historial 
+        de progreso y ranking por categoría (fuerza, cardio, resistencia).
+      </p>
+
+      <p class="plan-price" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        <span class="precio-rojo">$349</span> 
+        <span class="precio-negro">MXN / mes</span>
+      </p>
+    </div>
+
+    <!-- PLAN EliteAthlete -->
+    <div class="plan-card">
+      <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        Plan <span class="rojo">EliteAthlete</span>
+      </h2>
+
+      <p class="plan-desc" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+        La experiencia completa. Acceso a rutinas avanzadas exclusivas, 
+        oxigenación en tiempo real, rankings dinámicos, recomendaciones 
+        inteligentes según desempeño y sistema de logros gamificado.
+      </p>
+
+      <p class="plan-price" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">
+        <span class="precio-rojo">$499</span> 
+        <span class="precio-negro">MXN / mes</span>
+      </p>
+    </div>
+
+    <p class="footer" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+      Nuestros planes están sujetos a cambios y podrás acceder a ellos<br />
+      Una vez que te registres
+    </p>
+
+  </div>
+</div>

@@ -3,15 +3,15 @@
   <div class="content">
     <img src="/Assets/Images/Login/Fit manager.png" class="title-image" />
     <div class="form-box">
-      <input type="email" placeholder="Ingresa tu correo" />
-      <input type="password" placeholder="Ingresa tu contraseña" />
-      <span class="forgot">Olvide mi contraseña</span>
-      <button class="btn register">Registrarme</button>
-      <button class="btn login">Iniciar sesión</button>
+      <input type="email" placeholder="Ingresa tu correo" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}"/>
+      <input type="password" placeholder="Ingresa tu contraseña" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}"/>
+      <span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>
+      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">Registrarme</button>
+      <button class="btn login" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">Iniciar sesión</button>
     </div>
   </div>
   <div class="footer">
-    <p>Conoce nuestros planes</p>
+    <p [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Conoce nuestros planes</p>
     <span class="arrow">▼</span>
   </div>
 </div>
