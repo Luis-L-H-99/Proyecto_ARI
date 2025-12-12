@@ -1,7 +1,7 @@
 .videos-container {
   width: 100%;
   padding: 20px 40px;
-  background: #520000;        /* tu color original */
+ /// background: #520000;        /* tu color original */
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -19,21 +19,25 @@
 .videos-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 25px;
   padding: 0;
   margin: 0 auto;
+  max-width: 1400px;
+  justify-content: center;
 }
 
 /* TARJETA */
 .video-card {
-  width: 330px;
+  max-width: 330px;
+  flex: 1 1 calc(25% - 25px);
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.25s ease;
+  justify-content: center;
   
-  background: #520000;        /* 🔥 color restaurado */
+  ///background: #520000;        /* 🔥 color restaurado */
   
   display: flex;
   flex-direction: column;
@@ -78,46 +82,23 @@
   word-wrap: break-word;
 }
 
-/* TABLETS */
-@media (max-width: 768px) {
+/* 3 POR FILA */
+@media (max-width: 1200px) {
   .video-card {
-    width: 260px;
-  }
-
-  .video-card img {
-    height: 170px;
-  }
-
-  .video-title {
-    font-size: 20px;
+    flex: 1 1 calc(33.33% - 25px);
   }
 }
 
-/* CELULARES */
-@media (max-width: 480px) {
-  .videos-container {
-    padding: 15px;
-  }
-
-  .titulo-lista {
-    font-size: 26px;
-  }
-
-  .videos-grid {
-    gap: 15px;
-  }
-
+/* 2 POR FILA */
+@media (max-width: 900px) {
   .video-card {
-    width: 200px;
-    padding-bottom: 10px;
-  }
-
-  .video-card img {
-    height: 130px;
-  }
-
-  .video-title {
-    font-size: 18px;
+    flex: 1 1 calc(50% - 25px);
   }
 }
 
+/* 1 POR FILA */
+@media (max-width: 500px) {
+  .video-card {
+    flex: 1 1 100%;
+  }
+}
