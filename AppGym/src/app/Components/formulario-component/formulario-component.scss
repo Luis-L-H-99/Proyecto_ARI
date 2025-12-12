@@ -1,0 +1,91 @@
+/* Fondo general del formulario */
+.registro-container {
+  background-color: #000;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  color: white;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Logo en la esquina superior izquierda */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+}
+
+/* Título */
+.titulo {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  color: white;
+}
+
+/* Formulario general */
+.formulario {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* Contenedor de cada campo */
+.campo {
+  margin-bottom: 22px;
+}
+
+/* Etiquetas */
+.campo label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Inputs redondeados */
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  margin-top: 8px;
+  font-size: 18px;
+  outline: none;
+  background-color: white;
+  appearance: none; /* quitar flecha del navegador */
+}
+
+/* Flecha personalizada del select */
+.campo select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 22px;
+  cursor: pointer;
+}
+
+/* Botón */
+.btn-registro {
+  display: block;
+  margin: 40px auto;
+  background-color: red;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 40px;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-registro:hover {
+  transform: scale(1.05);
+  background-color: rgb(255, 60, 60);
+}
