@@ -191,10 +191,13 @@ input {
   .member-logo {
     width: 120px;
     height: auto;
-    max-width: 45%;         /* ← IMPIDE que invada el espacio del usuario */
+    max-width: 45%;         /*impide que invada el espacio del usuario */
+    
+     min-width: 110px;   /*tamaño mínimo permitido*/
+    flex-shrink: 0;  
   }
 
-  /* USERNAME: evita desbordes */
+  /*evita desbordes */
   .username {
     max-width: 90px;
     white-space: nowrap;
@@ -212,7 +215,7 @@ input {
     display: flex;
     align-items: center;
     gap: 6px;
-    max-width: 50%;         /* ← LIMITE para que no empuje al logo */
+    max-width: 50%;         /*limite para que no empuje al logo */
   }
 
   .title {
@@ -248,10 +251,10 @@ input {
     height: 30px;
   }
 }
-*/*/
+/* */
 
 /* */
-/* BARRA SUPERIOR */
+/* barra superior */
 .topbar {
   /*width: 100%;*/
   padding: 1px 20px;
