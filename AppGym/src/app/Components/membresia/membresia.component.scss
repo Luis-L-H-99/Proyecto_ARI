@@ -9,6 +9,7 @@
 .page-container {
   max-width: 900px;
   margin: auto;
+  padding: 10px;
 }
 
 /* Título de la página */
@@ -17,7 +18,7 @@
   font-size: 38px;
   margin-bottom: 20px;
   margin-left: 20px;
-  margin-top: 1px;  
+  margin-top: 2rem;  
   padding-left: 10px;
 }
 
@@ -48,7 +49,6 @@
 .black {
   color: black;
 }
-
 
 /* Descripción */
 .plan-description {
@@ -109,8 +109,6 @@ input {
   
 }
 
-
-
 ::placeholder{
   color: rgba(255, 255, 255, 0.692);
 }
@@ -161,11 +159,6 @@ input {
   color: white;
 }
 
-
-
-
-/* */
-
 /* */
 /* barra superior */
 .topbar {
@@ -175,6 +168,7 @@ input {
   justify-content: space-between;
   align-items: center;
    padding-bottom: 0px;
+   padding-top: 5px;
 }
 
 
@@ -185,7 +179,8 @@ input {
 }
 
 .member-logo {
-  width: clamp(110px, 30vw, 200px);
+  width: 180px;     /* tamaño fijo */
+  min-width: 180px; /* evita que se achique */
   height: auto;
   object-fit: contain;
 }
@@ -241,21 +236,7 @@ html, body {
 
   .topbar-left {
     flex-shrink: 0;
-  }
-
-  .topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    max-width: 50%;
-  }
-
-  /* ===== Logo ===== */
-  .member-logo {
-    width: 120px;        /* tamaño responsive fijo */
-    height: auto;
-    object-fit: contain;
-  }
+  }  
 
   /* ===== Usuario ===== */
   .username {
@@ -266,24 +247,9 @@ html, body {
     text-overflow: ellipsis;
   }
 
-  .perfil-ico {
-    width: 35px;
-    height: 35px;
-  }
-
   /* ===== Título ===== */
   .title {
     margin-left: 10px;
     font-size: 32px;
   }
-
-  /* ===== Formularios ===== */
-  /*.row {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .price-tag {
-    text-align: right;
-  }*/
 }
