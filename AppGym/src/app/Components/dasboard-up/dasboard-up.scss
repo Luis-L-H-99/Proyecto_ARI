@@ -3,14 +3,14 @@
   display: grid;
   gap: 20px;
   padding: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
 }
 
 /* Tarjetas */
 .tarjeta {
   background: #FFFFFF;
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   align-items:center;
   align-content: center;
@@ -58,12 +58,13 @@
 
 /* Textos */
 .titulos {
-  font-size: 22px;
+  font-size: 30px;
 
 }
 
 .value {
-  font-size: 20px;
+  text-align: center;
+  font-size: 30px;
   font-weight: bold;
   color: #FF0000;
   margin-top: -5px;
@@ -71,6 +72,7 @@
 
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 700px) {
+  
   .tarjeta,
   .tarjeta-salir {
     display: flex;
