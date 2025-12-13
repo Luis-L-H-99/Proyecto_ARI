@@ -15,7 +15,7 @@
   align-items:center;
   align-content: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 35px;
   cursor: pointer;
   transition: transform 0.25s ease-in-out;
 }
@@ -58,13 +58,13 @@
 
 /* Textos */
 .titulos {
-  font-size: 30px;
+  font-size: 25px;
 
 }
 
 .value {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   color: #FF0000;
   margin-top: -5px;
@@ -72,7 +72,7 @@
 
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 700px) {
-  
+
   .tarjeta,
   .tarjeta-salir {
     display: flex;
@@ -96,10 +96,10 @@
   }
 
   .titulos {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .value {
-    font-size: 16px;
+    font-size: 50px;
   }
 }
