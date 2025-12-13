@@ -16,8 +16,9 @@
   color: rgba(255, 255, 255, 0.966);
   font-size: 38px;
   margin-bottom: 20px;
-  margin-left: 80px;
+  margin-left: 20px;
   margin-top: 1px;  
+  padding-left: 10px;
 }
 
 /* Tarjeta de cada plan */
@@ -117,7 +118,7 @@ input {
 /* Fila 50/50 */
 .row {
   display: flex;
-  gap: 100px;
+  gap: 40px;
 }
 
 .column {
@@ -162,102 +163,14 @@ input {
 
 
 
-/* RESPONSIVO */
 
-@media (max-width: 650px) {
-  /*.row {
-    flex-direction: column;
-  }*/
-
-  .price-tag {
-    text-align: right;
-  }
-
- 
-}
-
-@media (max-width: 600px) {
-
-  /* Hace que la topbar se adapte al ancho y evite empalmes */
-  .topbar {
-   /* padding: 10px 10px;*/
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* logo, no debe ocupar demasiado espacio */
-  .member-logo {
-    width: 120px;
-    height: auto;
-    max-width: 45%;         /*impide que invada el espacio del usuario */
-    
-     min-width: 110px;   /*tamaño mínimo permitido*/
-    flex-shrink: 0;  
-  }
-
-  /*evita desbordes */
-  .username {
-    max-width: 90px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .perfil-ico {
-    width: 35px;
-    height: 35px;
-  }
-
-  /* Contenedor lado derecho */
-  .topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    max-width: 50%;         /*limite para que no empuje al logo */
-  }
-
-  .title {
-    margin-left: 10px;
-  }
-}
-
-/*/*
-/* responsive seccion topbar */
-@media (max-width: 430px) {
-
-  .topbar {
-    padding: 5px 5px;
-  }
-
-  .member-logo {
-    width: 110px;
-    max-width: 42%;
-  }
-
-  .topbar-right {
-    gap: 5px;
-    max-width: 50%;
-  }
-
-  .username {
-    max-width: 70px;
-    font-size: 14px;
-  }
-
-  .perfil-ico {
-    width: 30px;
-    height: 30px;
-  }
-}
 /* */
 
 /* */
 /* barra superior */
 .topbar {
   /*width: 100%;*/
-  padding: 1px 20px;
+  /*padding: 1px 20px;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -272,10 +185,13 @@ input {
 }
 
 .member-logo {
-  height: 70px;
-  width: 200px;
+  width: clamp(110px, 30vw, 200px);
+  height: auto;
   object-fit: contain;
-  
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 .brand {
@@ -306,3 +222,68 @@ input {
   max-width: 130px;
 }
 
+
+@media (max-width: 650px) {
+
+  /* ===== Layout general ===== */
+  .page-background {
+    padding: 0px 15px;
+  }
+
+  /* ===== Topbar ===== */
+  .topbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+  }
+
+  .topbar-left {
+    flex-shrink: 0;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 50%;
+  }
+
+  /* ===== Logo ===== */
+  .member-logo {
+    width: 120px;        /* tamaño responsive fijo */
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ===== Usuario ===== */
+  .username {
+    max-width: 90px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .perfil-ico {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* ===== Título ===== */
+  .title {
+    margin-left: 10px;
+    font-size: 32px;
+  }
+
+  /* ===== Formularios ===== */
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .price-tag {
+    text-align: right;
+  }
+}
