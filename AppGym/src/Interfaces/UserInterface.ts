@@ -13,7 +13,7 @@ export interface UserInterface {
   peso?: number;
   tipoCuerpo?: string;
   objetivo?: string;
-  frecuenciaAsistencia?: number;
+  frecuenciaAsistencia?: string;
   tipoAlimentacion?: string;
   frecuenciaCardiaca?: number;
   oxigenacion?: number;
