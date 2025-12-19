@@ -1,0 +1,207 @@
+/* RESET GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+/* DOCUMENTO BASE */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.video-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #000;
+  color: #fff;
+}
+
+/* HEADER */
+.video-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* BOTÓN MENÚ */
+.menu-btn {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* ÍCONOS BOTÓN MENÚ */
+.menu-btn span {
+  width: 18px;
+  height: 3px;
+  background: #FF0000;
+  border-radius: 2px;
+}
+
+/* BARRA DE PROGRESO */
+.progress-wrapper {
+  flex: 1;
+}
+
+.progress-wrapper input[type="range"] {
+  width: 100%;
+  accent-color: #12E800;
+}
+
+/* CRONÓMETRO */
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+/* TEXTO ETIQUETA */
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* COLOR VERDE */
+.green {
+  color: #12E800;
+}
+
+/* COLOR NARANJA */
+.orange {
+  color: #FF6C00;
+}
+
+/* TIEMPO */
+.time {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #FF6C00;
+}
+
+/* CONTENEDOR VIDEO */
+.video-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* BOTÓN PLAY */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: rgb(255, 0, 0);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* CONTROLES */
+.controls {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* BOTONES CONTROLES */
+.controls button {
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.video-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* TÍTULO */
+.info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* DESCRIPCIÓN */
+.info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* BOTÓN TERMINAR */
+.end-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 600px) {
+  .video-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    bottom: 8px;
+  }
+
+  .play-btn {
+    font-size: 2.2rem;
+  }
+}
+
+/* RESPONSIVE PANTALLAS GRANDES */
+@media (min-width: 1400px) {
+  .video-container {
+    max-width: 1200px;
+    padding: 1.2rem;
+  }
+}
