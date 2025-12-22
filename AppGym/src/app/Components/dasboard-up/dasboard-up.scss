@@ -1,54 +1,106 @@
+/* Contenedor de de las tarjetas */
 .tarjeta-container {
   display: grid;
-  gap: 15px;
-  padding: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center; 
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
 }
 
+/* Tarjetas */
 .tarjeta {
   background: #FFFFFF;
   border-radius: 15px;
-  padding: 6px;
+  padding: 10px;
   display: flex;
-  gap: 26px;
-  align-items: center;
+  align-items:center;
+  align-content: center;
+  justify-content: flex-start;
+  gap: 35px;
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
 }
 
 .tarjeta-salir {
-  background-color: #FFFFFF;
+  background: #FFFFFF; 
   border-radius: 15px;
-  align-items: center;
-  padding: 50px;
-  flex-direction: column;
   display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
 }
 
-.icon {
-  height: 100px;
-  width: 100px;
-}
-
-.icon-salir {
-  height: 60px;
-  width: 165px;
-}
-
-.tarjeta:hover {
-  transform: translateY(-5px);
-}
-
+/* Hover */
+.tarjeta:hover,
 .tarjeta-salir:hover {
   transform: translateY(-5px);
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+/* Iconos */
+.icon {
+  height: 90px;
+  width: 90px;
+}
+
+.icon-salir {
+  height: 70px;
+  width: 150px;
+}
+
+/* Textos */
 .titulos {
-  font-size: 30px;
+  font-size: 25px;
 
 }
 
 .value {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: #FF0000;
+  margin-top: -5px;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 700px) {
+
+  .tarjeta,
+  .tarjeta-salir {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .content {
     text-align: center;
-    font-weight: bold;
-    color: #FF0000;
+
+  }
+
+  .icon {
+    height: 70px;
+    width: 70px;
+  }
+
+  .icon-salir {
+    height: 55px;
+    width: 120px;
+  }
+
+  .titulos {
     font-size: 25px;
+  }
+
+  .value {
+    font-size: 50px;
+  }
 }

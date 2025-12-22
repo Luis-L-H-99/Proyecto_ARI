@@ -10,17 +10,11 @@ body {
   overflow-x: hidden;
 }
 
-/* VARIABLES DE COLOR REFERENCIA DE JIRA*/
-/* Negro   #000000 */
-/* Rojo    #FF0000 */
-/* Blanco  #FFFFFF */
-/* Verde   #12E800 */
-
 /* FONDO GENERAL */
 .dashboard-container {
-  min-height: 100vh;
+  min-height: auto;
   padding: 2rem;
-  background: linear-gradient(to bottom, #000000 10%, #FF0000 200%);
+  background: none;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -29,11 +23,11 @@ body {
 /* CONTENEDOR PRINCIPAL (ranking y calendario) */
 .dashboard-row {
   display: flex;
-  align-items: stretch;  
+  align-items: stretch;
   gap: 2rem;
   width: 100%;
-  max-width: 1200px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;   
+  justify-content: center;
 }
 
 /* RECUADRO RANKING */
@@ -41,7 +35,8 @@ body {
   background: #FFFFFF;
   border-radius: 25px;
   padding: 1.5rem;
-  flex: 1;
+  flex: 1 1 350px;   
+  max-width: 550px;  
   min-width: 0;         
   overflow-x: hidden;
   max-height: none;
@@ -97,12 +92,11 @@ body {
   background: #FFFFFF;
   border-radius: 25px;
   padding: 1.5rem;
-  width: 340px; 
-  flex-shrink: 0;  
+  flex: 1 1 350px;  
+  max-width: 550px;  
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* Título del mes */
 .calendar-card h3 {
@@ -118,7 +112,6 @@ body {
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
   gap: 0.4rem;
-  /* PROBLEMA “METRO” */
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0, "clig" 0;
 }
@@ -127,7 +120,6 @@ body {
 .week-days span {
   font-weight: 700;
 }
-
 
 /* Días del mes */
 .days {
@@ -158,17 +150,12 @@ body {
     overflow-y: auto;  
   }
 
-  /* El calendario se mantiene firme, solo un poco más compacto */
-  .calendar-card {
-    width: 320px;
-  }
-
-  /* Los items del ranking se pueden acomodar mejor */
+  /* Los items del ranking se acomodan mejor */
   .ranking-list {
     gap: 0.75rem;
     flex-direction: column;
   }
-   /* cada usuario en fila */
+
   .ranking-item {
     display: flex;
     align-items: center;
@@ -176,35 +163,25 @@ body {
     text-align: left;
   }
 
-  /* trofeos a la derecha */
   .trophies {
     margin-left: auto;
   }
 }
 
-
 /* Celulares */
 @media (max-width: 600px) {
 
-  /* Más compacto todavía, pero misma línea */
   .ranking-card {
     max-height: 300px;
     padding: 1rem;
     overflow-y: auto; 
   }
 
-  /* Calendario sigue intacto, no se deforma */
-  .calendar-card {
-    width: 280px;
-  }
-
-  /* Avatares un poco más pequeños */
   .avatar {
     width: 60px;
     height: 60px;
   }
 
-  /* Texto ligeramente más compacto */
   .title {
     font-size: 1.5rem;
   }
@@ -216,7 +193,44 @@ body {
   .trophies {
     font-size: 0.85rem;
   }
-  
+}
+
+/* CUANDO LA PANTALLA SEA MUY CHICA */
+@media (max-width: 750px) {
+
+  .dashboard-row {
+    flex-direction: column;
+    align-items: stretch;   
+    gap: 1.5rem;
+  }
+
+  /* Ambos recuadros ocupan el 100% del ancho */
+  .ranking-card,
+  .calendar-card {
+    width: 100% !important;   
+    max-width: none;          
+  }
+}
+
+/* PANTALLAS GRANDES — Abarcar TODA la pantalla */
+@media (min-width: 1200px) {
+
+  .dashboard-row {
+    width: 100%;
+    max-width: 100%;      
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .ranking-card {
+    flex: 3 1 900px;      
+    max-width: none;      
+  }
+
+  .calendar-card {
+    flex: 1 1 350px;      
+    max-width: 420px;     
+  }
 }
 
 /* CONTROLES CALENDARIO */
@@ -228,14 +242,13 @@ body {
   margin-bottom: 0.6rem;
 }
 
-/* Texto del mes y año */
+/* TEXTO DEL MES Y DEL AÑO */
 .calendar-header .month-label {
   font-weight: 700;
   color: #000000; 
 }
 
-
-/* Botones de navegación */
+/* BOTONES DE NAVEGACION */
 .nav-btn {
   background: transparent;
   border: 1px solid #FF0000;
@@ -246,7 +259,7 @@ body {
   font-weight: 600;
 }
 
-/* Selectores de mes y año */
+/* SELESCTORES DE MES Y AÑO */
 .calendar-controls {
   display: flex;
   gap: 0.5rem;
@@ -279,7 +292,7 @@ body {
   font-weight: 700;
 }
 
-/* día actual */
+/* DIA ACTUAL */
 .days span.active {
   background: #12E800; 
   color: #000;
@@ -291,7 +304,7 @@ body {
   background: transparent;
 }
 
-/* Scroll simple y redondeado */
+/* SCROL SIMPLE Y REDONDO*/
 .ranking-card::-webkit-scrollbar {
   width: 8px;
 }
@@ -305,3 +318,21 @@ body {
   border-radius: 12px;
 }
 
+/*  AJUSTE TIPOGRÁFICO RANKING */
+/* Título Ranking de usuarios */
+.title {
+  font-size: 2.4rem;     
+  font-weight: 800;
+}
+
+/* Nombre del usuario */
+.position {
+  font-size: 1.2rem;     
+  font-weight: 600;
+}
+
+/* Trofeos (más grandes que el nombre) */
+.trophies {
+  font-size: 1.7rem;     
+  font-weight: 1000;      
+}

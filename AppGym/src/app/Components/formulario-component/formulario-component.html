@@ -2,10 +2,10 @@
 
   <!-- Logo superior izquierda -->
   <div class="logo-container">
-  <img src="assets/images/Formulario/FitManager.png" class="logo" alt="FitManager">
-    </div>
+    <img src="/assets/images/formulario/FitManager.png" class="logo" alt="FitManager">
+  </div>
 
-  <h1 class="titulo">Registro</h1>
+  <h1 class="titulo">Formulario</h1>
 
   <form class="formulario">
 
@@ -39,43 +39,58 @@
       <label>Tipo de cuerpo</label>
       <select>
         <option value="" disabled selected>Selecciona tu tipo de cuerpo</option>
-        <option>Ectomorfo</option>
-        <option>Mesomorfo</option>
-        <option>Endomorfo</option>
+        <option>Delgado</option>
+        <option>Atletico</option>
+        <option>Robusto</option>
       </select>
     </div>
 
     <!-- SELECT: Objetivo -->
     <div class="campo">
-      <label>Objetivo</label>
+      <label>Selecciona el objetivo por el cual quieres entrar</label>
       <select>
         <option value="" disabled selected>Selecciona tu objetivo</option>
         <option>Subir masa muscular</option>
-        <option>Bajar de peso</option>
-        <option>Tonificar</option>
-        <option>Mantenerse en forma</option>
+        <option>Perder peso / reducir grasa corporal</option>
+        <option>Mejorar resistencia física</option>
+        <option>Tonificar el cuerpo</option>
+        <option>Mejorar salud cardiovascular</option>
+        <option>Incrementar fuerza</option>
+        <option>Reducir estrés y mejorar bienestar</option>
+        <option>Prepararse para competencia / deporte</option>
+        <option>Rehabilitación física básica</option>
+        <option>Mantenerse activo</option>
       </select>
     </div>
 
     <!-- SELECT: Frecuencia -->
     <div class="campo">
-      <label>Frecuencia de asistencia</label>
+      <label>Frecuencia de tu asistencia</label>
       <select>
-        <option value="" disabled selected>Selecciona tu frecuencia</option>
-        <option>1 vez por semana</option>
-        <option>2 veces por semana</option>
-        <option>3 veces por semana</option>
-        <option>4 veces por semana</option>
-        <option>5 veces por semana</option>
-        <option>Diario</option>
+        <option value="" disabled selected>Frecuencia</option>
+        <option>Ocasional (1 vez por semana)</option>
+        <option>Moderada (2-3 veces por semana)</option>
+        <option>Constante (4-5 veces por semana)</option>
+        <option>Intensa (6-7 veces por semana)</option>
       </select>
     </div>
 
+    <!-- SELECT: Alimentacion -->
     <div class="campo">
-      <label>Alimentación</label>
-      <input type="text" placeholder="Tipo de alimentación:">
+      <label>Tipo de alimentación</label>
+      <select>
+        <option value="" disabled selected>Alimentación</option>
+        <option>Balanceada (mezcla de todos los grupos: proteínas, carbohidratos, grasas saludables)</option>
+        <option>Alta en proteínas (pensada para ganar músculo)</option>
+        <option>Baja en carbohidratos (keto, cetogénica o similar)</option>
+        <option>Vegetariana</option>
+        <option>Vegana</option>
+        <option>Flexible / Sin plan específico</option>
+      </select>
+      
     </div>
 
+    <!-- Boton -->
     <button class="btn-registro">Completar registro</button>
 
   </form>

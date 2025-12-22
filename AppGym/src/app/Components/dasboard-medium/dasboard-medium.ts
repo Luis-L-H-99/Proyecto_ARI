@@ -1,21 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CustomFonts } from '../../enums/fonts.enum';
+import { getFont } from '../../utils/font.util';
+
+/* INTERFAZ PARA USUARIOS DEL RANKING */
+interface RankingUser {
+  position: number;
+  name: string;
+  trophies: number;
+}
+
+/* INTERFAZ PARA CELDAS DEL CALENDARIO */
+interface CalendarCell {
+  day?: number;
+  date?: Date;
+}
 
 @Component({
+  /* SELECTOR DEL COMPONENTE */
   selector: 'app-dasboard-medium',
+
+  /* COMPONENTE STANDALONE */
   standalone: true,
+
+  /* MODULOS UTILIZADOS */
   imports: [CommonModule, FormsModule],
+
+  /* ARCHIVOS DEL COMPONENTE */
   templateUrl: './dasboard-medium.html',
   styleUrl: './dasboard-medium.scss',
 })
 export class DasboardMedium implements OnInit {
 
-  /* DATOS BASE */
+  /* FUENTES PERSONALIZADAS */
+  customFonts = CustomFonts;
+  getFont = getFont;
+
+  /* RANKING DE USUARIOS */
+  rankingUsers: RankingUser[] = [
+    { position: 1, name: 'Jorge Armando', trophies: 200 },
+    { position: 2, name: 'Jorge Armando', trophies: 150 },
+    { position: 3, name: 'Jorge Armando', trophies: 100 },
+    { position: 4, name: 'Jorge Armando', trophies: 80 },
+    { position: 5, name: 'Jorge Armando', trophies: 50 },
+  ];
+
+  /* DATOS BASE DEL CALENDARIO */
   weekDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
   monthNames = [
-    'Enero','Febrero','Marzo','Abril','Mayo','Junio',
-    'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
 
   /* ESTADO DEL CALENDARIO */
@@ -23,18 +58,19 @@ export class DasboardMedium implements OnInit {
   currentMonth!: number;
   selectedDate: Date | null = null;
 
-  calendarCells: Array<{ day?: number; date?: Date } | null> = [];
+  calendarCells: Array<CalendarCell | null> = [];
 
   yearOptions: number[] = [];
   monthOptions = this.monthNames;
 
-  /* INIT */
+  /* INIT DEL COMPONENTE */
   ngOnInit(): void {
     const today = new Date();
+
     this.currentYear = today.getFullYear();
     this.currentMonth = today.getMonth();
 
-    // años (ej: 2020–2030)
+    /* GENERAR LISTA DE AÑOS */
     for (let y = this.currentYear - 5; y <= this.currentYear + 5; y++) {
       this.yearOptions.push(y);
     }
@@ -42,12 +78,12 @@ export class DasboardMedium implements OnInit {
     this.generateCalendar();
   }
 
-  /* LÓGICA CALENDARIO */
+  /* LOGICA DEL CALENDARIO */
   generateCalendar(): void {
     this.calendarCells = [];
 
     const firstDay = new Date(this.currentYear, this.currentMonth, 1);
-    const startWeekDay = firstDay.getDay(); // 0 = Domingo
+    const startWeekDay = firstDay.getDay();
 
     const daysInMonth = new Date(
       this.currentYear,
@@ -55,24 +91,24 @@ export class DasboardMedium implements OnInit {
       0
     ).getDate();
 
-    // espacios vacíos antes del día 1
+    /* ESPACIOS VACIOS */
     for (let i = 0; i < startWeekDay; i++) {
       this.calendarCells.push(null);
     }
 
-    // días reales
+    /* DIAS DEL MES */
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(this.currentYear, this.currentMonth, d);
       this.calendarCells.push({ day: d, date });
     }
 
-    // completar filas
+    /* COMPLETAR SEMANAS */
     while (this.calendarCells.length % 7 !== 0) {
       this.calendarCells.push(null);
     }
   }
 
-  /* NAVEGACIÓN */
+  /* NAVEGACION */
   prevMonth(): void {
     if (this.currentMonth === 0) {
       this.currentMonth = 11;
@@ -93,18 +129,18 @@ export class DasboardMedium implements OnInit {
     this.generateCalendar();
   }
 
-  /* SELECCIÓN */
-  selectDay(cell: any): void {
+  /* SELECCION DE DIAS */
+  selectDay(cell: CalendarCell | null): void {
     if (!cell || !cell.date) return;
     this.selectedDate = cell.date;
   }
 
-  isSelected(cell: any): boolean {
+  isSelected(cell: CalendarCell | null): boolean {
     if (!cell || !cell.date || !this.selectedDate) return false;
     return cell.date.toDateString() === this.selectedDate.toDateString();
   }
 
-  isToday(cell: any): boolean {
+  isToday(cell: CalendarCell | null): boolean {
     if (!cell || !cell.date) return false;
     const today = new Date();
     return cell.date.toDateString() === today.toDateString();

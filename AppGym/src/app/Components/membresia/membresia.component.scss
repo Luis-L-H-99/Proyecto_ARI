@@ -9,6 +9,7 @@
 .page-container {
   max-width: 900px;
   margin: auto;
+  padding: 10px;
 }
 
 /* Título de la página */
@@ -16,8 +17,9 @@
   color: rgba(255, 255, 255, 0.966);
   font-size: 38px;
   margin-bottom: 20px;
-  margin-left: 80px;
-  margin-top: 1px;  
+  margin-left: 20px;
+  margin-top: 2rem;  
+  padding-left: 10px;
 }
 
 /* Tarjeta de cada plan */
@@ -25,7 +27,7 @@
   background: white;
   border-radius: 30px;
   padding: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   transition: 0.3s ease;
 }
@@ -36,7 +38,7 @@
 
 /* Título del plan */
 .plan-title {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -47,7 +49,6 @@
 .black {
   color: black;
 }
-
 
 /* Descripción */
 .plan-description {
@@ -82,7 +83,7 @@
   color: white;
   padding: 10px 22px;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -94,6 +95,7 @@
 /* Formulario */
 .form-container {
   margin-top: 20px;
+  font-size: 17px; /* agregada el sabado 13 como observacion*/
 }
 
 input {
@@ -105,19 +107,18 @@ input {
   margin-bottom: 20px;
   outline: none;
   background-color: #ff0000;
+  font-size: 17px; /* agregada el sabado 13 como observacion*/
   
 }
 
-
-
 ::placeholder{
-  color: rgb(202, 202, 202);
+  color: rgba(255, 255, 255, 0.692);
 }
 
 /* Fila 50/50 */
 .row {
   display: flex;
-  gap: 100px;
+  gap: 40px;
 }
 
 .column {
@@ -160,51 +161,16 @@ input {
   color: white;
 }
 
-
-
-/* RESPONSIVO */
-
-@media (max-width: 650px) {
-  /*.row {
-    flex-direction: column;
-  }*/
-
-  .price-tag {
-    text-align: right;
-  }
-
-  .price-red {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .member-logo {
-    width: 120px;
-    height: 60px;
-  }
-  .topbar {
-    padding: 10px 10px;
-  }
-
-  .username {
-    max-width: 90px;
-  }
-
-  .title{
-  margin-left: 10px;
-  }
-}
-
 /* */
-/* BARRA SUPERIOR */
+/* barra superior */
 .topbar {
   /*width: 100%;*/
-  padding: 1px 10px;
+  /*padding: 1px 20px;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
    padding-bottom: 0px;
+   padding-top: 5px;
 }
 
 
@@ -215,10 +181,14 @@ input {
 }
 
 .member-logo {
-  height: 70px;
-  width: 150px;
+  width: 180px;     /* tamaño fijo */
+  min-width: 180px; /* evita que se achique */
+  height: auto;
   object-fit: contain;
-  
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 .brand {
@@ -241,7 +211,7 @@ input {
 }
 
 .username {
-  font-size: 20px;
+ /* font-size: 20px;*/
   color: white;
   white-space: nowrap;
   overflow: hidden;           
@@ -249,3 +219,39 @@ input {
   max-width: 130px;
 }
 
+
+@media (max-width: 650px) {
+
+  /* ===== Layout general ===== */
+  .page-background {
+    padding: 0px 15px;
+  }
+
+  /* ===== Topbar ===== */
+  .topbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+  }
+
+  .topbar-left {
+    flex-shrink: 0;
+  }  
+
+  /* ===== Usuario ===== */
+  .username {
+    max-width: 90px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ===== Título ===== */
+  .title {
+    margin-left: 10px;
+    font-size: 32px;
+  }
+}
