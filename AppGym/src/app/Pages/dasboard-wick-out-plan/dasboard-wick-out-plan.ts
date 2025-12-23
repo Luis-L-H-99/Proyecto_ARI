@@ -3,6 +3,7 @@ import { MembresiaComponent } from "../../Components/membresia/membresia.compone
 
 @Component({
   selector: 'app-dasboard-wick-out-plan',
+  standalone: true,
   imports: [MembresiaComponent],
   templateUrl: './dasboard-wick-out-plan.html',
   styleUrl: './dasboard-wick-out-plan.scss',

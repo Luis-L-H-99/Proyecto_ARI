@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ListaVideo } from "../../Components/lista-video/lista-video";
 import { ReproductorVideo } from "../../Components/reproductor-video/reproductor-video";
-
+import { ListaVideoComponent } from "../../Components/lista-video/lista-video";
 @Component({
   selector: 'app-reproductor',
-  imports: [ListaVideo, ReproductorVideo],
+  standalone: true,
+  imports: [ReproductorVideo, ListaVideoComponent],
   templateUrl: './reproductor.html',
   styleUrl: './reproductor.scss',
 })
