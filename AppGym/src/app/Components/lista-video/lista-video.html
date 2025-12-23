@@ -1,1 +1,25 @@
-<p>lista-video works!</p>
+<div class="lista-video" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">
+
+  <div class="logo-container">
+    <img src="assets/Images/Membresia/FitManager.png" alt="logo">
+  </div>
+
+  <div class="titulo" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Lista de videos</div>
+
+  <ul class="lista">
+  <li
+    *ngFor="let video of videos"
+    [class.activo]="video.active"
+    (click)="seleccionarVideo(video.id)"
+  >
+   1.- {{ video.title }}
+  </li>
+</ul>
+
+
+  <div class="footer">
+    <button class="cerrar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Cerrar</button>
+  </div>
+
+</div>
+
