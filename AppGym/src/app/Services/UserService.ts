@@ -92,9 +92,9 @@ export class UserService {
             asistencias: [
                 {
                     fechaAsistencia: undefined,
-                    dia: '01',
-                    mes: '01',
-                    anio: '2025',
+                    dia: 1,
+                    mes: 0,
+                    anio: 2025,
                     tiempoCronometroSegundos: 1000
                 }
             ],

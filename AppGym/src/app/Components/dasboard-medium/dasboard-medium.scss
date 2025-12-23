@@ -4,12 +4,10 @@
 *::after {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   overflow-x: hidden;
 }
-
 /* FONDO GENERAL */
 .dashboard-container {
   min-height: auto;
@@ -19,7 +17,6 @@ body {
   justify-content: center;
   align-items: flex-start;
 }
-
 /* CONTENEDOR PRINCIPAL (ranking y calendario) */
 .dashboard-row {
   display: flex;
@@ -29,7 +26,6 @@ body {
   flex-wrap: wrap;   
   justify-content: center;
 }
-
 /* RECUADRO RANKING */
 .ranking-card {
   background: #FFFFFF;
@@ -43,7 +39,6 @@ body {
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 /* Título del ranking */
 .title {
   font-size: 1.8rem;
@@ -51,20 +46,17 @@ body {
   margin-bottom: 1.5rem;
   color: #000000;
 }
-
 /* Lista de Ranking en fila  */
 .ranking-list {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
-
 /* Usuario individual */
 .ranking-item {
   text-align: center;
   flex: 1;
 }
-
 /* Avatar de usuario */
 .avatar {
   width: 75px;
@@ -74,13 +66,11 @@ body {
   object-fit: cover;
   margin-bottom: 0.5rem;
 }
-
 .position {
   font-weight: 600;
   font-size: 0.9rem;
   color: #000000;
 }
-
 .trophies {
   color: #FF0000;
   font-weight: 700;
@@ -97,7 +87,6 @@ body {
   box-shadow: 0 12px 30px rgba(0,0,0,.35);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 /* Título del mes */
 .calendar-card h3 {
   text-align: center;
@@ -105,7 +94,6 @@ body {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
-
 /* Días de la semana */
 .week-days {
   display: grid;
@@ -115,7 +103,6 @@ body {
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0, "clig" 0;
 }
-
 /* Texto de cada día de la semana */
 .week-days span {
   font-weight: 700;
@@ -123,23 +110,25 @@ body {
 
 /* Días del mes */
 .days {
+  user-select: none;
+  -webkit-user-select: none; /* Safari / iOS */
+  -ms-user-select: none;     /* Edge viejo */
+  pointer-events: none;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
   gap: 0.4rem;
 }
-
-.days span {
-  padding: 0.35rem 0;
-  border-radius: 50%;
+.days span.attendance {
+  background: #ff0000;
+  color: #fff;
+  font-weight: 700;
 }
-
 .days .active {
   background: #12E800;
 }
 
 /* RESPONSIVE */
-
 /* Tablets y pantallas medianas */
 @media (max-width: 900px) {
 
@@ -167,7 +156,6 @@ body {
     margin-left: auto;
   }
 }
-
 /* Celulares */
 @media (max-width: 600px) {
 
@@ -194,7 +182,6 @@ body {
     font-size: 0.85rem;
   }
 }
-
 /* CUANDO LA PANTALLA SEA MUY CHICA */
 @media (max-width: 750px) {
 
@@ -211,7 +198,6 @@ body {
     max-width: none;          
   }
 }
-
 /* PANTALLAS GRANDES — Abarcar TODA la pantalla */
 @media (min-width: 1200px) {
 
@@ -232,7 +218,6 @@ body {
     max-width: 420px;     
   }
 }
-
 /* CONTROLES CALENDARIO */
 .calendar-header {
   display: flex;
@@ -241,13 +226,11 @@ body {
   gap: 0.5rem;
   margin-bottom: 0.6rem;
 }
-
 /* TEXTO DEL MES Y DEL AÑO */
 .calendar-header .month-label {
   font-weight: 700;
   color: #000000; 
 }
-
 /* BOTONES DE NAVEGACION */
 .nav-btn {
   background: transparent;
@@ -258,7 +241,6 @@ body {
   cursor: pointer;
   font-weight: 600;
 }
-
 /* SELESCTORES DE MES Y AÑO */
 .calendar-controls {
   display: flex;
@@ -266,71 +248,64 @@ body {
   justify-content: center;
   margin-bottom: 0.6rem;
 }
-
 .calendar-controls select {
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   border: 1px solid #ddd;
   background: #fff;
 }
-
 .days span {
-  padding: 0.35rem 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.08s ease, background-color 0.12s;
 }
-
 .days span:hover {
   transform: translateY(-2px);
   background: rgba(255,108,0,0.08);
 }
-
 .days span.selected {
   background: #FF6C00; 
   color: #ffffff;
   font-weight: 700;
 }
-
 /* DIA ACTUAL */
 .days span.active {
   background: #12E800; 
   color: #000;
   font-weight: 700;
 }
-
 .days span.empty {
   cursor: default;
   background: transparent;
 }
-
 /* SCROL SIMPLE Y REDONDO*/
 .ranking-card::-webkit-scrollbar {
   width: 8px;
 }
-
 .ranking-card::-webkit-scrollbar-track {
   border-radius: 12px;
 }
-
 .ranking-card::-webkit-scrollbar-thumb {
   background: #bfbfbf;
   border-radius: 12px;
 }
-
 /*  AJUSTE TIPOGRÁFICO RANKING */
 /* Título Ranking de usuarios */
 .title {
   font-size: 2.4rem;     
   font-weight: 800;
 }
-
 /* Nombre del usuario */
 .position {
   font-size: 1.2rem;     
   font-weight: 600;
 }
-
 /* Trofeos (más grandes que el nombre) */
 .trophies {
   font-size: 1.7rem;     

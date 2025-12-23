@@ -40,6 +40,7 @@
         <select [(ngModel)]="currentYear" (change)="generateCalendar()">
           <option *ngFor="let y of yearOptions" [value]="y">{{ y }}</option>
         </select>
+
         <select [(ngModel)]="currentMonth" (change)="generateCalendar()">
           <option *ngFor="let m of monthOptions; let i = index" [value]="i">
             {{ m }}
@@ -53,7 +54,8 @@
       <!-- DIAS DEL MES -->
       <div class="days">
         <span *ngFor="let cell of calendarCells" [class.empty]="!cell" [class.active]="cell && isToday(cell)"
-          [class.selected]="cell && isSelected(cell)" (click)="selectDay(cell)">
+          [class.selected]="cell && isSelected(cell)" [class.attendance]="cell && hasAttendance(cell)"
+          (click)="selectDay(cell)">
           {{ cell?.day || '' }}
         </span>
       </div>

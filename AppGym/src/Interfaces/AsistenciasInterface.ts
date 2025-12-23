@@ -1,7 +1,7 @@
 export interface AsistenciasInterface {
   fechaAsistencia?: Date;
-  dia?: string;
-  mes?: string;
-  anio?: string;
+  dia?: number;
+  mes?: number;
+  anio?: number;
   tiempoCronometroSegundos?: number;
 }

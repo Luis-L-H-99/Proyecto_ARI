@@ -3,20 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
-
+import { AsistenciasInterface } from '../../../interfaces/AsistenciasInterface';
 /* INTERFAZ PARA USUARIOS DEL RANKING */
 interface RankingUser {
   position: number;
   name: string;
   trophies: number;
 }
-
 /* INTERFAZ PARA CELDAS DEL CALENDARIO */
 interface CalendarCell {
   day?: number;
   date?: Date;
 }
-
 @Component({
   /* SELECTOR DEL COMPONENTE */
   selector: 'app-dasboard-medium',
@@ -37,6 +35,40 @@ export class DasboardMedium implements OnInit {
   customFonts = CustomFonts;
   getFont = getFont;
 
+  // asi se van a poner se debe de poner de acuerdo con la persona que guardara los datos en el reproductor por que el 
+  // mes debe de ser uno antes del actual si es diciembre se debe de guardar 11 y si es enero 0
+  // 0 → Enero
+  // 11 → Diciembre
+  asistencias: AsistenciasInterface[] = [
+  {
+    fechaAsistencia: new Date(2025, 11, 21),
+    dia: 21,
+    mes: 11,
+    anio: 2025,
+    tiempoCronometroSegundos: 25
+  },
+  {
+    fechaAsistencia: new Date(2025, 11, 20),
+    dia: 20,
+    mes: 11,
+    anio: 2025,
+    tiempoCronometroSegundos: 10
+  },
+  {
+    fechaAsistencia: new Date(2025, 11, 22),
+    dia: 22,
+    mes: 11,
+    anio: 2025,
+    tiempoCronometroSegundos: 10
+  },
+  {
+    fechaAsistencia: new Date(2025, 11, 23),
+    dia: 23,
+    mes: 11,
+    anio: 2025,
+    tiempoCronometroSegundos: 10
+  }
+];
   /* RANKING DE USUARIOS */
   rankingUsers: RankingUser[] = [
     { position: 1, name: 'Jorge Armando', trophies: 200 },
@@ -45,14 +77,12 @@ export class DasboardMedium implements OnInit {
     { position: 4, name: 'Jorge Armando', trophies: 80 },
     { position: 5, name: 'Jorge Armando', trophies: 50 },
   ];
-
   /* DATOS BASE DEL CALENDARIO */
   weekDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
   monthNames = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
-
   /* ESTADO DEL CALENDARIO */
   currentYear!: number;
   currentMonth!: number;
@@ -145,4 +175,14 @@ export class DasboardMedium implements OnInit {
     const today = new Date();
     return cell.date.toDateString() === today.toDateString();
   }
+// Función para saber si un día tiene asistencia
+  hasAttendance(cell: CalendarCell | null): boolean {
+  if (!cell || !cell.date) return false;
+
+  return this.asistencias.some(asistencia =>
+    asistencia.tiempoCronometroSegundos !== 0 &&
+    asistencia.fechaAsistencia!.toDateString() === cell.date!.toDateString()
+  );
+}
+
 }
