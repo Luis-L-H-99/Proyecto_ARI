@@ -26,8 +26,12 @@ export class ReproductorVideo {
   hasStarted = false;     // Indica si el video ya ha comenzado alguna vez
   currentTime = 0;        // Tiempo actual del video
   duration = 0;           // Duración total del video
-  controlsVisible = false; // Estado de visibilidad de los controles
-  controlsTimeout!: ReturnType<typeof setTimeout>; // Referencia al temporizador para ocultar controles
+  isListaOpen = false;
+
+  /* ABRIR / CERRAR LISTA */
+  toggleLista() {
+    this.isListaOpen = !this.isListaOpen;
+  }
 
   /* PLAY / PAUSE Se ejecuta al hacer click en el video o botones */
   togglePlay() {
@@ -40,22 +44,10 @@ export class ReproductorVideo {
     if (!this.hasStarted) {
       this.hasStarted = true;
     }
-
-    this.showControls();
   } else {
     video.pause();
     this.isPlaying = false;
-    this.showControls();
   }
-}
-
-  /* Muestra los controles y los oculta después de 4 segundos */
-  showControls() {
-  this.controlsVisible = true;
-  clearTimeout(this.controlsTimeout);
-  this.controlsTimeout = setTimeout(() => {
-    this.controlsVisible = false;
-  }, 4000);
 }
 
   /* ACTUALIZA EL TIEMPO ACTUAL */
@@ -70,15 +62,6 @@ export class ReproductorVideo {
   const video = this.videoRef.nativeElement;
   this.duration = isNaN(video.duration) ? 0 : video.duration;
 }
-
-  /* ADELANTAR / RETROCEDER SEGUNDOS */
-  skip(seconds: number) {
-    const video = this.videoRef.nativeElement;
-    video.currentTime = Math.min(
-      Math.max(video.currentTime + seconds, 0),
-      this.duration
-    );
-  }
 
   /* MOVER VIDEO DESDE LA BARRA DE PROGRESO */
   seekVideo() {
@@ -110,7 +93,7 @@ export class ReproductorVideo {
   }
 
   /* TERMINAR VIDEO */
-  endVideo() {
+  endVideo() { 
     const video = this.videoRef.nativeElement;
     video.pause();
     video.currentTime = 0;

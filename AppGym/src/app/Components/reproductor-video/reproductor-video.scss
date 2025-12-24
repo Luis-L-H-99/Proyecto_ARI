@@ -31,8 +31,8 @@ body {
 
 /* BOTÓN MENÚ */
 .menu-btn {
-  width: 42px;
-  height: 42px;
+  width: 55px;
+  height: 55px;
   background: #ffffff;
   border-radius: 50%;
   border: none;
@@ -48,7 +48,7 @@ body {
 .menu-btn span {
   width: 18px;
   height: 3px;
-  background: #FF0000;
+  background: #ff0000;
   border-radius: 2px;
 }
 
@@ -66,8 +66,16 @@ body {
 .timer {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
+  align-items: flex-end;  
+  text-align: right;       
+  min-width: 120px;        
+}
+
+/* TIEMPO */
+.time {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #FF6C00;
 }
 
 /* TEXTO ETIQUETA */
@@ -83,13 +91,6 @@ body {
 
 /* COLOR NARANJA */
 .orange {
-  color: #FF6C00;
-}
-
-/* TIEMPO */
-.time {
-  font-size: 0.9rem;
-  font-weight: 700;
   color: #FF6C00;
 }
 
@@ -116,36 +117,16 @@ video {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   background: rgb(255, 0, 0);
   border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.6rem;
+  font-size: 3.2rem;
   color: #fff;
-  cursor: pointer;
-}
-
-/* CONTROLES */
-.controls {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.75rem;
-}
-
-/* BOTONES CONTROLES */
-.controls button {
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  color: #fff;
-  padding: 0.45rem 0.75rem;
-  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -159,14 +140,14 @@ video {
 /* TÍTULO */
 .info h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
 }
 
 /* DESCRIPCIÓN */
 .info p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   color: #ccc;
 }
 
@@ -175,10 +156,10 @@ video {
   background: #ffffff;
   color: #000000;
   border: none;
-  padding: 0.6rem 1.4rem;
+  padding: 0.8rem 1.8rem;
   border-radius: 14px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -203,5 +184,22 @@ video {
   .video-container {
     max-width: 1200px;
     padding: 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .video-container {
+    max-width: 100%;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .video-box {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  video {
+    object-fit: cover;
   }
 }
