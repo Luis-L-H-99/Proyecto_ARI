@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core'; //Agregado Output y EventEmitter
 import { CommonModule } from '@angular/common';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
+
 @Component({
   selector: 'app-lista-video',
   standalone: true,
@@ -10,6 +11,9 @@ import { getFont } from '../../utils/font.util';
   styleUrls: ['./lista-video.scss'],
 })
 export class ListaVideoComponent {
+  // Evento para cerrar el menú desde este componente
+  @Output() closeMenu = new EventEmitter<void>();
+
   CustomFonts = CustomFonts
   getFont = getFont
   videos = [
@@ -23,11 +27,18 @@ export class ListaVideoComponent {
     { id: 8, title: 'Video 8 - Quema grasa', active: false },
     { id: 9, title: 'Video 9 - Quema grasa', active: false }
   ];
-// 
+  
+  // Método para cerrar el menú
+  cerrarMenu(): void {
+    this.closeMenu.emit();
+  }
+  
+  // Ahora también cierra el menú al seleccionar un video
   seleccionarVideo(id: number): void {
     this.videos.forEach(video => {
       video.active = video.id === id;
     });
     console.log('Video seleccionado:', id);
+    this.cerrarMenu(); // Cierra el menú al seleccionar un video
   }
 }

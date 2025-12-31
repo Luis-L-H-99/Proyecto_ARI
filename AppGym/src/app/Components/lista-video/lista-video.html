@@ -1,18 +1,22 @@
+<!-- Eliminado el host para que funcione dentro del menú lateral -->
 <div class="lista-video" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">
   <div class="logo-container">
     <img src="/assets/images/membresia/FitManager.png" alt="logo">
   </div>
   <div class="titulo" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Lista de videos</div>
   <ul class="lista">
-  <li
-    *ngFor="let video of videos"
-    [class.activo]="video.active"
-    (click)="seleccionarVideo(video.id)"
-  >
-   1.- {{ video.title }}
-  </li>
-</ul>
+    <li
+      *ngFor="let video of videos"
+      [class.activo]="video.active"
+      (click)="seleccionarVideo(video.id)"
+    >
+      1.- {{ video.title }}
+    </li>
+  </ul>
   <div class="footer">
-    <button class="cerrar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Cerrar</button>
+    <!-- Agregadoclick para cerrar menú -->
+    <button class="cerrar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}" (click)="cerrarMenu()">
+      Cerrar
+    </button>
   </div>
 </div>

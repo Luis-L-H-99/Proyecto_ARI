@@ -2,8 +2,8 @@
 <div class="video-container">
   <!-- HEADER -->
   <div class="video-header">
-    <!-- BOTÓN MENÚ -->
-    <button class="menu-btn">
+    <!-- BOTÓN MENÚ - agregado evento click -->
+    <button class="menu-btn" (click)="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
@@ -12,10 +12,9 @@
     <div class="progress-wrapper">
       <span
         class="label green"
-        [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Progreso
       </span>
-
       <input
         type="range"
         min="0"
@@ -28,68 +27,65 @@
     <div class="timer">
       <span
         class="label orange"
-        [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Cronómetro
       </span>
-
-      <span
-        class="time orange"
-        [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
-        {{ formatTime(currentTime) }} / -{{ remainingTime }}
+      <span class="time orange time-rigth">
+        {{ formatTime(currentTime) }} 
       </span>
     </div>
   </div>
   <!-- FIN HEADER -->
   <!-- VIDEO -->
-  <div class="video-box" (mousemove)="showControls()" (click)="showControls()">
+  <div class="video-box">
     <!-- ELEMENTO VIDEO -->
-    <video #video
+    <video
+      #video
       (click)="togglePlay()"
       (timeupdate)="updateTime()"
-      (loadedmetadata)="setDuration()">
-      <source src="assets/images/reproductor/RutinaGym1.mp4" type="video/mp4">
+      (loadedmetadata)="setDuration()"
+    >
+      <source
+        src="assets/images/reproductor/RutinaGym1.mp4"
+        type="video/mp4"
+      />
     </video>
     <!-- BOTÓN PLAY GRANDE (solo cuando NO se reproduce) -->
     <button
       class="play-btn"
-      *ngIf="!hasStarted"
-      (click)="togglePlay()"
+      *ngIf="!isPlaying"
+      (click)="togglePlay(); $event.stopPropagation()"
     >
       ▶
     </button>
-    <!-- CONTROLES (solo cuando se está reproduciendo) -->
-    <div class="controls" *ngIf="controlsVisible">
-      <button (click)="skip(-10)">⏮-10S </button>
-
-      <button
-        (click)="togglePlay()"
-        [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
-        {{ isPlaying ? '⏸' : '▶' }}
-      </button>
-
-      <button (click)="skip(10)">+10S ⏭</button>
-    </div>
   </div>
   <!-- FIN VIDEO -->
   <!-- FOOTER -->
   <div class="video-footer">
     <!-- INFORMACIÓN DEL VIDEO -->
     <div class="info">
-      <h3 [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+      <h3 [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Video 1 - Quema grasa
       </h3>
-
-      <p [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+      <p [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Coach Ángeles
       </p>
     </div>
     <!-- BOTÓN TERMINAR -->
     <button
       class="end-btn"
-      [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}"
-      (click)="endVideo()">
+      [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }"
+      (click)="endVideo()"
+    >
       Terminar ➜
     </button>
   </div>
   <!-- FIN FOOTER -->
+  <!-- OVERLAY PARA CERRAR MENÚ AL HACER CLIC FUERA -->
+  <div class="menu-overlay" *ngIf="isMenuOpen" (click)="toggleMenu()"></div>
+  <!-- CONTENEDOR DEL MENÚ LATERAL -->
+  <div class="side-menu" [class.open]="isMenuOpen">
+    <!-- Aquí se insertará el componente ListaVideo -->
+    <app-lista-video (closeMenu)="toggleMenu()"></app-lista-video>
+  </div>
 </div>

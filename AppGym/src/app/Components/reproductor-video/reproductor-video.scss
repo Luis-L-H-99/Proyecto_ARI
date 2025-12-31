@@ -2,15 +2,14 @@
 * {
   box-sizing: border-box;
 }
-
 /* DOCUMENTO BASE */
 html,
 body {
   height: 100%;
   margin: 0;
+  background-color: #000; /* Fondo negro para eliminar espacios blancos */
 }
-
-/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR PRINCIPAL - CORREGIDO */
 .video-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -20,19 +19,21 @@ body {
   gap: 1rem;
   background: #000;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh; /* Asegura que ocupe al menos toda la pantalla */
 }
-
-/* HEADER */
+/* HEADER - MEJORADO */
 .video-header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0; /* Evita que se encoja */
 }
-
 /* BOTÓN MENÚ */
 .menu-btn {
-  width: 42px;
-  height: 42px;
+  width: 55px;
+  height: 55px;
   background: #ffffff;
   border-radius: 50%;
   border: none;
@@ -42,58 +43,52 @@ body {
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  z-index: 100;
+  position: relative;
 }
-
 /* ÍCONOS BOTÓN MENÚ */
 .menu-btn span {
   width: 18px;
   height: 3px;
-  background: #FF0000;
+  background: #ff0000;
   border-radius: 2px;
 }
-
 /* BARRA DE PROGRESO */
 .progress-wrapper {
   flex: 1;
 }
-
 .progress-wrapper input[type="range"] {
   width: 100%;
   accent-color: #12E800;
 }
-
 /* CRONÓMETRO */
 .timer {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
+  align-items: flex-end;  
+  text-align: right;       
+  min-width: 120px;        
 }
-
-/* TEXTO ETIQUETA */
+/* TIEMPO */
+.time {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #FF6C00;
+}
+/* TEXTO ETIQUETA Progreso y cronometro*/
 .label {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
-
 /* COLOR VERDE */
 .green {
   color: #12E800;
 }
-
 /* COLOR NARANJA */
 .orange {
   color: #FF6C00;
 }
-
-/* TIEMPO */
-.time {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #FF6C00;
-}
-
-/* CONTENEDOR VIDEO */
+/* CONTENEDOR VIDEO  */
 .video-box {
   position: relative;
   width: 100%;
@@ -101,107 +96,283 @@ body {
   background: #000;
   border-radius: 16px;
   overflow: hidden;
+  flex-grow: 1; /* Ocupa espacio disponible */
+  min-height: 0; /* Permite que se ajuste */
 }
-
 video {
   width: 100%;
   height: 100%;
   object-fit: contain;
   background: #000;
 }
-
 /* BOTÓN PLAY */
 .play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
+  width: 80px; 
+  height: 80px; 
   background: rgb(255, 0, 0);
   border: none;
-  border-radius: 50%;
+  border-radius: 50%; 
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.6rem;
+  font-size: 2.5rem; 
   color: #fff;
   cursor: pointer;
+  z-index: 2;
+  padding: 0; 
+  margin: 0; 
+  overflow: hidden; 
+  line-height: 1; 
+  text-align: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
-/* CONTROLES */
-.controls {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.75rem;
+/* Efecto hover para botón play */
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: rgb(220, 0, 0); 
 }
-
-/* BOTONES CONTROLES */
-.controls button {
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  color: #fff;
-  padding: 0.45rem 0.75rem;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-/* FOOTER */
+/* FOOTER - MEJORADO */
 .video-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0; /* NUEVO: Evita que se encoja */
 }
-
 /* TÍTULO */
 .info h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
 }
-
 /* DESCRIPCIÓN */
 .info p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   color: #ccc;
 }
-
 /* BOTÓN TERMINAR */
 .end-btn {
   background: #ffffff;
   color: #000000;
   border: none;
-  padding: 0.6rem 1.4rem;
+  padding: 0.8rem 1.8rem;
   border-radius: 14px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
+/* OVERLAY PARA CERRAR MENÚ */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+  display: block;
+}
+/* CONTENEDOR DEL MENÚ LATERAL */
+.side-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  max-height: 100%;
+  background-color: #353434;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden; 
+}
+/* CLASE PARA MOSTRAR EL MENÚ */
+.side-menu.open {
+  transform: translateX(0);
+}
+/* ANIMACIÓN PARA EL OVERLAY */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* PANTALLAS MEDIANAS (Tablets) - 601px a 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .video-container {
+    height: 100vh; /* Ocupa toda la pantalla */
+    padding: 1rem; /* Reduce padding */
+    gap: 0.8rem; /* Reduce espacio entre elementos */
+    justify-content: space-between; /* Distribuye espacio uniformemente */
+  }
+  
+  .video-header {
+    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+  }
+  
+  .video-box {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    aspect-ratio: 16/9; /* Mantiene proporción */
+    min-height: 300px; /* Altura mínima */
+  }
+  
+  .video-footer {
+    padding: 0.5rem 0;
+  }
+  
+  .menu-btn {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .end-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.3rem;
+  }
+  
+  /* para tablets, un ancho más apropiado */
+  .side-menu {
+    width: 50%; 
+    max-width: 400px; 
+  }
+}
 
-/* RESPONSIVE MÓVIL */
+/* PANTALLAS PEQUEÑAS (Móviles) - hasta 600px */
 @media (max-width: 600px) {
+  .video-container {
+    height: 100vh; /* Ocupa toda la pantalla */
+    padding: 0.8rem; /* Reduce padding significativamente */
+    gap: 0.6rem; /* Reduce espacio entre elementos */
+    justify-content: space-between; /* Distribuye elementos */
+  }
+  
   .video-header {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
   }
-
+  
+  .timer {
+    align-items: flex-start; /* Alinea a la izquierda en móvil */
+    min-width: auto;
+  }
+  
+  .video-box {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    aspect-ratio: 16/9; /* Mantiene proporción */
+    min-height: 200px; /* Altura mínima */
+    margin: 0.3rem 0;
+  }
+  
+  .video-footer {
+    flex-direction: column; /* Apila información y botón */
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    align-items: stretch; /* Estira elementos */
+  }
+  
+  .info h3 {
+    font-size: 1.4rem; /* Reduce tamaño de fuente */
+    text-align: center; /* Centra texto */
+  }
+  
+  .info p {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .end-btn {
+    width: 100%; /* Botón ocupa todo el ancho */
+    padding: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .play-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 2rem;
+  }
+  
   .controls {
     bottom: 8px;
   }
 
-  .play-btn {
-    font-size: 2.2rem;
+  /* en móvil, el menú ocupa solo el 85% */
+  .side-menu {
+    width: 85%;
+    max-width: 300px; 
+  }
+  
+  /* Ajustes de fuente para móvil */
+  .label {
+    font-size: 1.2rem; /* Reduce tamaño de "Progreso" y "Cronómetro" */
+  }
+  
+  .time {
+    font-size: 1.2rem;
   }
 }
 
-/* RESPONSIVE PANTALLAS GRANDES */
+/* RESPONSIVE PARA PANTALLAS GRANDES */
+@media (min-width: 1025px) {
+  .side-menu {
+    width: clamp(210px, 28vw, 350px); 
+  }
+}
+
 @media (min-width: 1400px) {
   .video-container {
     max-width: 1200px;
     padding: 1.2rem;
+  }
+}
+
+/* PANTALLAS MUY GRANDES */
+@media (min-width: 1200px) {
+  .video-container {
+    max-width: 100%;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+
+  .video-box {
+    height: 70vh; /* Reduce altura para dejar espacio a header y footer */
+    max-height: 800px; 
+    border-radius: 0;
+    background: #000;
+    flex: none; 
+  }
+
+  video {
+    object-fit: contain;
+  }
+  
+  /* Header y footer ajustados para pantallas grandes */
+  .video-header {
+    margin-bottom: 1rem;
+  }
+  
+  .video-footer {
+    margin-top: 1rem;
+  }
+}
+
+/* Para pantallas muy anchas pero no tan altas */
+@media (min-width: 1200px) and (max-height: 800px) {
+  .video-box {
+    height: 65vh; 
   }
 }
