@@ -2,8 +2,8 @@
 <div class="video-container">
   <!-- HEADER -->
   <div class="video-header">
-    <!-- BOTÓN MENÚ -->
-    <button class="menu-btn">
+    <!-- BOTÓN MENÚ - agregado evento click -->
+    <button class="menu-btn" (click)="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
@@ -31,7 +31,7 @@
         Cronómetro
       </span>
       <span class="time orange time-rigth">
-        {{ formatTime(currentTime) }} / -{{ remainingTime }}
+        {{ formatTime(currentTime) }} 
       </span>
     </div>
   </div>
@@ -81,4 +81,11 @@
     </button>
   </div>
   <!-- FIN FOOTER -->
+  <!-- OVERLAY PARA CERRAR MENÚ AL HACER CLIC FUERA -->
+  <div class="menu-overlay" *ngIf="isMenuOpen" (click)="toggleMenu()"></div>
+  <!-- CONTENEDOR DEL MENÚ LATERAL -->
+  <div class="side-menu" [class.open]="isMenuOpen">
+    <!-- Aquí se insertará el componente ListaVideo -->
+    <app-lista-video (closeMenu)="toggleMenu()"></app-lista-video>
+  </div>
 </div>

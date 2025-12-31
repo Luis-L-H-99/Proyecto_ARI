@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
+import { ListaVideoComponent } from '../lista-video/lista-video'; // Importar componente
 
 @Component({
   selector: 'app-reproductor-video',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ListaVideoComponent], // Agregar ListaVideoComponent
   templateUrl: './reproductor-video.html',
   styleUrl: './reproductor-video.scss',
 })
@@ -26,11 +27,16 @@ export class ReproductorVideo {
   hasStarted = false;     // Indica si el video ya ha comenzado alguna vez
   currentTime = 0;        // Tiempo actual del video
   duration = 0;           // Duración total del video
-  isListaOpen = false;
+  // Variable para controlar visibilidad del menú lateral
+  isMenuOpen: boolean = false; // Controla si el menú lateral está abierto
 
-  /* ABRIR / CERRAR LISTA */
-  toggleLista() {
-    this.isListaOpen = !this.isListaOpen;
+  /* ABRIR / CERRAR MENÚ LATERAL */
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    // Pausar video cuando se abre el menú para mejor experiencia de usuario
+    if (this.isMenuOpen && this.isPlaying) {
+      this.togglePlay();
+    }
   }
 
   /* PLAY / PAUSE Se ejecuta al hacer click en el video o botones */
@@ -84,13 +90,21 @@ export class ReproductorVideo {
   return this.formatTime(this.duration - this.currentTime);
 }
 
-  /* FORMATO DE TIEMPO mm:ss */
-  formatTime(seconds: number): string {
-    if (isNaN(seconds)) return '0:00';
-    const min = Math.floor(seconds / 60);
-    const sec = Math.floor(seconds % 60);
-    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
-  }
+  /* FORMATO DE TIEMPO hh:mm:ss */
+formatTime(seconds: number): string {
+  if (isNaN(seconds)) return '00:00:00';
+
+  const hrs = Math.floor(seconds / 3600);
+  const min = Math.floor((seconds % 3600) / 60);
+  const sec = Math.floor(seconds % 60);
+
+  const h = hrs.toString().padStart(2, '0');
+  const m = min.toString().padStart(2, '0');
+  const s = sec.toString().padStart(2, '0');
+
+  return `${h}:${m}:${s}`;
+}
+
 
   /* TERMINAR VIDEO */
   endVideo() { 

@@ -1,23 +1,15 @@
-:host {
-  display: block;
-  height: 100vh;
-}
+/*  Eliminado :host para que funcione dentro del menú lateral */
 
 /* CONTENEDOR PRINCIPAL*/
 .lista-video {
-  height: 100vh;
+  height: 100%; 
   background-color: #353434;
   color: #ffffff;
-
   display: flex;
   flex-direction: column;
-
-  /* Padding*/
   padding: clamp(14px, 3vw, 18px);
   box-sizing: border-box;
-
-  /* Ancho fluido */
-  width: clamp(210px, 28vw, 300px);
+  width: 100%; 
 }
 
 /* LOGO */
@@ -48,24 +40,22 @@
   list-style: none;
   padding: 0;
   margin: 0;
-
   text-align: center;
   margin-top: clamp(4px, 1vw, 10px);
-
-  flex: 1; /* empuja el footer hacia abajo */
+  flex: 1; 
+  padding-bottom: clamp(20px, 5vh, 40px);
 }
 
-/* ITEMS*/
+/* ITEMS Lista */
 .lista li {
   cursor: pointer;
   padding: 4px 0;
   line-height: 1.5;
-
   font-size: clamp(13px, 4.5vw, 15px);
   font-weight: 300;
   letter-spacing: 0.9px;
-
   transition: color 0.2s ease;
+  margin-bottom: clamp(2px, 0.8vh, 6px);
 }
 
 /* ITEM ACTIVO */
@@ -80,6 +70,9 @@
   display: flex;
   justify-content: center;
   margin-top: auto;
+  padding-top: clamp(12px, 3vh, 20px);   
+  padding-bottom: clamp(10px, 2vh, 18px); 
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* BOTÓN */
@@ -88,22 +81,8 @@
   border: none;
   color: #ffffff;
   cursor: pointer;
-
   font-size: clamp(14px, 4.5vw, 16px);
   font-weight: 400;
 }
 
-/* MOBILE FIRST */
-@media (max-width: 600px) {
-  .lista-video {
-    width: 100vw;
-    padding: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .lista-overlay {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.95);
-  }
-}
+/* RESPONSIVE - ELIMINADO EL MEDIA QUERY ANTERIOR YA QUE AHORA EL CONTENEDOR PADRE SE ENCARGA */
