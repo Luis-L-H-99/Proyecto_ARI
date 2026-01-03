@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 import { UserService } from '../../Services/UserService';
@@ -14,17 +13,14 @@ import { MetodoPagoInterface } from '../../../interfaces/MetodoPagoInterface';
   templateUrl: './membresia.component.html',
   styleUrls: ['./membresia.component.scss']
 })
-export class MembresiaComponent implements OnInit {
+export class MembresiaComponent {
 
   CustomFonts = CustomFonts;
   getFont = getFont;
 
   selectedPlan: string | null = null;
 
-  constructor(
-    private router: Router,
-    private userService: UserService
-  ) {}
+  constructor(private userService: UserService) {}
 
   plans = [
     {
@@ -54,33 +50,16 @@ export class MembresiaComponent implements OnInit {
     cvv: ''
   };
 
-  ngOnInit(): void {
-    const usuario = this.userService.usuarioActual;
-
-    if (!usuario) {
-      this.router.navigate(['/Login']);
-      return;
-    }
-
-    if (usuario.planActivo) {
-      this.router.navigate(['/Dashboard']);
-    }
-  }
-
   selectPlan(planId: string) {
     this.selectedPlan = planId;
   }
 
   cancel() {
     this.selectedPlan = null;
-    this.formData = {
-      name: '',
-      cardNumber: '',
-      expiration: '',
-      cvv: ''
-    };
+    this.formData = { name: '', cardNumber: '', expiration: '', cvv: '' };
   }
 
+  // VALIDACIONES
   isNameValid(name: string): boolean {
     return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name.trim());
   }
@@ -95,6 +74,26 @@ export class MembresiaComponent implements OnInit {
 
   isCvvValid(cvv: string): boolean {
     return /^\d{3}$/.test(cvv);
+  }
+
+  onCardInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/\D/g, '').slice(0, 16);
+    this.formData.cardNumber = input.value;
+  }
+
+  onExpirationInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.replace(/\D/g, '').slice(0, 4);
+    if (value.length >= 3) value = value.slice(0, 2) + '/' + value.slice(2);
+    input.value = value;
+    this.formData.expiration = value;
+  }
+
+  onCvvInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/\D/g, '').slice(0, 3);
+    this.formData.cvv = input.value;
   }
 
   pay() {
@@ -116,28 +115,18 @@ export class MembresiaComponent implements OnInit {
     const usuario = this.userService.usuarioActual;
     if (!usuario) return;
 
-    const metodoPago: MetodoPagoInterface = {
+    const plan = this.plans.find(p => p.id === this.selectedPlan);
+
+    usuario.metodoPago = {
       nombreTarjeta: name,
       numeroTarjeta: cardNumber,
       fechaExpiracion: expiration,
-      cvv: cvv
-    };
+      cvv
+    } as MetodoPagoInterface;
 
-    const plan = this.plans.find(p => p.id === this.selectedPlan);
-
-    usuario.metodoPago = metodoPago;
     usuario.planActivo = true;
-    usuario.planAsociado = {
-      nombrePlan: plan?.name ?? '',
-      descripcionPlan: plan?.description ?? '',
-      precioPlan: plan?.price ?? 0
-    };
     usuario.fechaCompraPlan = new Date();
-    usuario.fechaExpiracionPlan = new Date(
-      new Date().setFullYear(new Date().getFullYear() + 1)
-    );
-
-    alert('Pago realizado correctamente');
-    this.router.navigate(['/Dashboard']);
+    usuario.fechaExpiracionPlan = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+    usuario.planAsociado = plan as any;
   }
 }
