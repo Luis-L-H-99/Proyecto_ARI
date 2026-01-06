@@ -4,7 +4,8 @@ import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-dasboard-up',
   imports: [ CommonModule ],
@@ -14,18 +15,32 @@ import { UserInterface } from '../../../interfaces/UserInterface';
 export class DasboardUp {
   customFonts = CustomFonts
   getFont = getFont
-
   userActual: UserInterface | null = null;
   frecuenciaCardiaca = 0;
   oxigenacion = 0;
   trofeos = 0;
   caloriasQuemadas = 0;
   rutinaNombre = 'Sin Rutina'
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private location: Location
+  ) {}
+  logout(): void{
+    //Limpia el usuario actual
+    this.userService.usuarioActual = null;
+    //Reemplaza la url para que no se pueda volver atras despues de cerrar sesion
+    this.location.replaceState('/login');
+    //Navega al login
+    this.router.navigate(['/login']);
+  }
   ngOnInit(): void{
     //Obtener el usuario que inicio sesion
     this.userActual = this.userService.usuarioActual;
-    if (!this.userActual) return;
+    if (!this.userActual) {
+      this.router.navigate(['/login']);
+      return;
+    } 
     //Calculo aleatorio para las tarjetas
     this.frecuenciaCardiaca = this.random(60, 100);
     this.oxigenacion = this.random(95, 100);
