@@ -18,11 +18,11 @@ export class ReproductorVideo {
   @ViewChild('video', { static: false })
   videoRef!: ElementRef<HTMLVideoElement>;
 
-   /* fuente de letra */
+  /* fuente de letra */
   customFonts = CustomFonts;
   getFont = getFont;
 
- /* ESTADO DEL REPRODUCTOR */
+  /* ESTADO DEL REPRODUCTOR */
   isPlaying = false;      // Indica si el video está reproduciéndose
   hasStarted = false;     // Indica si el video ya ha comenzado alguna vez
   currentTime = 0;        // Tiempo actual del video
@@ -38,42 +38,37 @@ export class ReproductorVideo {
       this.togglePlay();
     }
   }
-
   /* PLAY / PAUSE Se ejecuta al hacer click en el video o botones */
   togglePlay() {
-  const video = this.videoRef.nativeElement;
+    const video = this.videoRef.nativeElement;
 
-  if (video.paused) {
-    video.play();
-    this.isPlaying = true;
+    if (video.paused) {
+      video.play();
+      this.isPlaying = true;
 
-    if (!this.hasStarted) {
-      this.hasStarted = true;
+      if (!this.hasStarted) {
+        this.hasStarted = true;
+      }
+    } else {
+      video.pause();
+      this.isPlaying = false;
     }
-  } else {
-    video.pause();
-    this.isPlaying = false;
   }
-}
-
   /* ACTUALIZA EL TIEMPO ACTUAL */
   updateTime() {
-  const video = this.videoRef.nativeElement;
-  this.currentTime = video.currentTime;
-  this.duration = video.duration;
-}
-
+    const video = this.videoRef.nativeElement;
+    this.currentTime = video.currentTime;
+    this.duration = video.duration;
+  }
   /* OBTIENE LA DURACIÓN TOTAL DEL VIDEO */
   setDuration() {
-  const video = this.videoRef.nativeElement;
-  this.duration = isNaN(video.duration) ? 0 : video.duration;
-}
-
+    const video = this.videoRef.nativeElement;
+    this.duration = isNaN(video.duration) ? 0 : video.duration;
+  }
   /* MOVER VIDEO DESDE LA BARRA DE PROGRESO */
   seekVideo() {
     this.videoRef.nativeElement.currentTime = this.currentTime;
   }
-
   /* PANTALLA COMPLETA */
   toggleFullscreen() {
     const video = this.videoRef.nativeElement;
@@ -83,34 +78,38 @@ export class ReproductorVideo {
       document.exitFullscreen();
     }
   }
-
   /* TIEMPO RESTANTE (GETTER) */
   get remainingTime(): string {
-  if (!this.duration) return '0:00';
-  return this.formatTime(this.duration - this.currentTime);
-}
-
+    if (!this.duration) return '0:00';
+    return this.formatTime(this.duration - this.currentTime);
+  }
   /* FORMATO DE TIEMPO hh:mm:ss */
-formatTime(seconds: number): string {
-  if (isNaN(seconds)) return '00:00:00';
+  formatTime(seconds: number): string {
+    if (isNaN(seconds)) return '00:00:00';
 
-  const hrs = Math.floor(seconds / 3600);
-  const min = Math.floor((seconds % 3600) / 60);
-  const sec = Math.floor(seconds % 60);
+    const hrs = Math.floor(seconds / 3600);
+    const min = Math.floor((seconds % 3600) / 60);
+    const sec = Math.floor(seconds % 60);
 
-  const h = hrs.toString().padStart(2, '0');
-  const m = min.toString().padStart(2, '0');
-  const s = sec.toString().padStart(2, '0');
+    const h = hrs.toString().padStart(2, '0');
+    const m = min.toString().padStart(2, '0');
+    const s = sec.toString().padStart(2, '0');
 
-  return `${h}:${m}:${s}`;
-}
-
+    return `${h}:${m}:${s}`;
+  }
   /* TERMINAR VIDEO */
-  endVideo() { 
+  endVideo() {
     const video = this.videoRef.nativeElement;
     video.pause();
     video.currentTime = 0;
     this.isPlaying = false;
     alert('Video terminado');
+  }
+  /* VIDEO TERMINADO - REPRODUCIR AUTOMÁTICAMENTE DE NUEVO */
+  onVideoEnded(): void {
+    const video = this.videoRef.nativeElement;
+    video.currentTime = 0;
+    video.play();
+    this.isPlaying = true;
   }
 }
