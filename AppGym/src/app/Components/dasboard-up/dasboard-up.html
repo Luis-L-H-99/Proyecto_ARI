@@ -1,47 +1,46 @@
 <div class="tarjeta-container">
-
+  <!--Tarjeta para la Frecuancia Cardiaca-->
   <div class="tarjeta">
     <img src="/assets/images/dashboard/ritmo-cardiaco.png" class="icon">
     <div class="content" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
       <p class="titulos">Frecuencia Cardiaca</p>
-      <p class="value">0 lpm</p>
+      <p class="value">{{frecuenciaCardiaca}} lpm</p>
     </div>
   </div>
-
+  <!--Tarjeta para la Oxigenacion-->
   <div class="tarjeta">
     <img src="/assets/images/dashboard/celulas-sanguineas.png" class="icon">
     <div class="content" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
       <p class="titulos">Oxigenación</p>
-      <p class="value">0%</p>
+      <p class="value">{{oxigenacion}} %</p>
     </div>
   </div>
-
+  <!--Tarjeta para los Trofeos-->
   <div class="tarjeta">
     <img src="/assets/images/dashboard/ganador.png" class="icon">
     <div class="content" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
       <p class="titulos">Mis Trofeos</p>
-      <p class="value">0</p>
+      <p class="value">{{trofeos}}</p>
     </div>
   </div>
-
+  <!--Tarjeta para las Calorias Quemadas-->
   <div class="tarjeta">
     <img src="/assets/images/dashboard/calorias.png" class="icon">
     <div class="content" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
       <p class="titulos">Calorías Quemadas</p>
-      <p class="value">0.0</p>
+      <p class="value">{{caloriasQuemadas}} kcal</p>
     </div>
   </div>
-
+  <!--Tarjeta para las Rutinas Activas-->
   <div class="tarjeta">
     <img src="/assets/images/dashboard/play.png" class="icon">
     <div class="content" [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
       <p class="titulos">Rutina</p>
-      <p class="value">Sin Rutina</p>
+      <p class="value">{{rutinaNombre}}</p>
     </div>
   </div>
-
-  <div class="tarjeta-salir">
+  <!--Tarjeta para Salir-->
+  <div class="tarjeta-salir" (click)="logout()">
     <img src="/assets/images/dashboard/salir.png" class="icon-salir">
   </div>
-
 </div>
