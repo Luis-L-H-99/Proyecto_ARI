@@ -10,28 +10,18 @@
     </button>
     <!-- BARRA DE PROGRESO -->
     <div class="progress-wrapper">
-      <span
-        class="label green"
-        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
+      <span class="label green" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Progreso
       </span>
-      <input
-        type="range"
-        min="0"
-        [max]="duration"
-        [(ngModel)]="currentTime"
-        (input)="seekVideo()"
-      />
+      <input type="range" min="0" [max]="duration" [(ngModel)]="currentTime" (input)="seekVideo()" />
     </div>
     <!-- CRONÓMETRO -->
     <div class="timer">
-      <span
-        class="label orange"
-        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
+      <span class="label orange" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }">
         Cronómetro
       </span>
       <span class="time orange time-rigth">
-        {{ formatTime(currentTime) }} 
+        {{ formatTime(currentTime) }}
       </span>
     </div>
   </div>
@@ -39,23 +29,12 @@
   <!-- VIDEO -->
   <div class="video-box">
     <!-- ELEMENTO VIDEO -->
-    <video
-      #video
-      (click)="togglePlay()"
-      (timeupdate)="updateTime()"
-      (loadedmetadata)="setDuration()"
-    >
-      <source
-        src="assets/images/reproductor/RutinaGym1.mp4"
-        type="video/mp4"
-      />
+    <video #video (click)="togglePlay()" (timeupdate)="updateTime()" (loadedmetadata)="setDuration()"
+      (ended)="onVideoEnded()">
+      <source src="assets/images/reproductor/RutinaGym1.mp4" type="video/mp4" />
     </video>
     <!-- BOTÓN PLAY GRANDE (solo cuando NO se reproduce) -->
-    <button
-      class="play-btn"
-      *ngIf="!isPlaying"
-      (click)="togglePlay(); $event.stopPropagation()"
-    >
+    <button class="play-btn" *ngIf="!isPlaying" (click)="togglePlay(); $event.stopPropagation()">
       ▶
     </button>
   </div>
@@ -72,11 +51,7 @@
       </p>
     </div>
     <!-- BOTÓN TERMINAR -->
-    <button
-      class="end-btn"
-      [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }"
-      (click)="endVideo()"
-    >
+    <button class="end-btn" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT) }" (click)="endVideo()">
       Terminar ➜
     </button>
   </div>
