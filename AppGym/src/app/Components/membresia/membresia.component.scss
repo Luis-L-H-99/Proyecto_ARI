@@ -1,80 +1,74 @@
 /* Fondo general */
 .page-background {
-  background: linear-gradient(to bottom,  #000000,#5c0404dc);
+  background: linear-gradient(to bottom, #000000, #5c0404dc);
   padding: 0px 15px;
   min-height: 100vh;
 }
-
 /* Contenedor centrado */
 .page-container {
   max-width: 900px;
   margin: auto;
   padding: 10px;
 }
-
 /* Título de la página */
 .title {
   color: rgba(255, 255, 255, 0.966);
   font-size: 38px;
   margin-bottom: 20px;
   margin-left: 20px;
-  margin-top: 2rem;  
+  margin-top: 2rem;
   padding-left: 10px;
 }
-
+/* Contenedor del título y botón salir */
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /* Tarjeta de cada plan */
 .plan-card {
   background: white;
   border-radius: 30px;
   padding: 25px;
   margin-bottom: 50px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   transition: 0.3s ease;
 }
-
 .plan-card.selected {
   transform: scale(1.02);
 }
-
 /* Título del plan */
 .plan-title {
   font-size: 30px;
   font-weight: bold;
 }
-
 .red {
   color: #ff0000;
 }
-
 .black {
   color: black;
 }
-
 /* Descripción */
 .plan-description {
   margin-top: 10px;
   font-size: 16px;
   color: #000000;
 }
-
 /* Precio del plan */
 .price-tag {
   margin-top: 15px;
   text-align: right;
 }
-
 .price-red {
   font-size: 32px;
   font-weight: bold;
   color: #ff0000;
   /*display: block;*/
 }
-
 .price-black {
   font-size: 20px;
   color: black;
 }
-
 /* Botón contratar */
 .btn-contratar {
   margin-top: 20px;
@@ -87,17 +81,15 @@
   cursor: pointer;
   transition: 0.2s;
 }
-
 .btn-contratar:hover {
   background: #a30000;
 }
-
 /* Formulario */
 .form-container {
   margin-top: 20px;
-  font-size: 17px; /* agregada el sabado 13 como observacion*/
+  font-size: 17px;
+  /* agregada el sabado 13 como observacion*/
 }
-
 input {
   color: rgb(255, 255, 255);
   width: 100%;
@@ -107,33 +99,27 @@ input {
   margin-bottom: 20px;
   outline: none;
   background-color: #ff0000;
-  font-size: 17px; /* agregada el sabado 13 como observacion*/
-  
+  font-size: 17px;
+  /* agregada el sabado 13 como observacion*/
 }
-
-::placeholder{
+::placeholder {
   color: rgba(255, 255, 255, 0.692);
 }
-
 /* Fila 50/50 */
 .row {
   display: flex;
   gap: 40px;
 }
-
 .column {
   flex: 1;
 }
-
 /* Botones inferiores */
 .buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-
-.btn-cancelar,
-.btn-pagar {
+.btn-cancelar,.btn-pagar {
   padding: 10px 30px;
   border-radius: 100px;
   font-size: 20px;
@@ -141,27 +127,20 @@ input {
   cursor: pointer;
   text-align: center;
 }
-
 .btn-cancelar:hover {
   background: #cc0000;
 }
-
 .btn-pagar:hover {
   background: #cc0000;
 }
-
-
 .btn-cancelar {
   background: #ff0000;
   color: white;
 }
-
 .btn-pagar {
   background: #ff0000;
   color: white;
 }
-
-/* */
 /* barra superior */
 .topbar {
   /*width: 100%;*/
@@ -169,39 +148,34 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   padding-bottom: 0px;
-   padding-top: 5px;
+  padding-bottom: 0px;
+  padding-top: 5px;
 }
-
-
 .topbar-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .member-logo {
-  width: 180px;     /* tamaño fijo */
-  min-width: 180px; /* evita que se achique */
+  width: 180px;
+  /* tamaño fijo */
+  min-width: 180px;
+  /* evita que se achique */
   height: auto;
   object-fit: contain;
 }
-
-html, body {
+html,body {
   overflow-x: hidden;
 }
-
 .brand {
   font-size: 28px;
   font-weight: bold;
 }
-
 .topbar-right {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .perfil-ico {
   width: 50px;
   height: 50px;
@@ -209,25 +183,45 @@ html, body {
   object-fit: cover;
   /*border: 2px solid white;*/
 }
-
 .username {
- /* font-size: 20px;*/
+  /* font-size: 20px;*/
   color: white;
   white-space: nowrap;
-  overflow: hidden;           
+  overflow: hidden;
   text-overflow: ellipsis;
   max-width: 130px;
 }
-
-
+/* Botón salir pequeño */
+.tarjeta-salir {
+  cursor: pointer;
+  margin-right: 20px;
+  background-color: rgb(255, 255, 255);
+  padding: 6px 12px;
+  /* espacio interno (arriba/abajo - izquierda/derecha) */
+  border-radius: 8px;
+  /* bordes redondeados tipo botón */
+  display: flex;
+  /* para alinear icono y texto si hay */
+  align-items: center;
+  gap: 6px;
+  /* espacio entre texto "Salir" y el icono */
+}
+.icon-salir {
+  height: 32px;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+.icon-salir:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+/*responsive */
 @media (max-width: 650px) {
-
-  /* ===== Layout general ===== */
+  /* Layout general  */
   .page-background {
     padding: 0px 15px;
   }
-
-  /* ===== Topbar ===== */
+  /* Topbar */
   .topbar {
     width: 100%;
     display: flex;
@@ -235,12 +229,10 @@ html, body {
     align-items: center;
     padding: 5px 5px;
   }
-
   .topbar-left {
     flex-shrink: 0;
-  }  
-
-  /* ===== Usuario ===== */
+  }
+  /* Usuario */
   .username {
     max-width: 90px;
     font-size: 14px;
@@ -248,8 +240,7 @@ html, body {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  /* ===== Título ===== */
+  /* Título */
   .title {
     margin-left: 10px;
     font-size: 32px;
