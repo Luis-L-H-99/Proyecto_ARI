@@ -444,13 +444,13 @@ video {
 
   .video-header,
   .video-footer {
-    max-width: 1350px;
+    max-width: 1380px;
     /* un poco más ancho */
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    padding-left: 0.6rem;
+    padding-left: 20px;
     /* menos separación lateral */
-    padding-right: 0.6rem;
+    padding-right: 20px;
   }
 }
