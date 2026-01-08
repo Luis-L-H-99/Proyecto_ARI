@@ -206,7 +206,7 @@ export class MembresiaComponent {
     if (index !== -1) {
       usuarios[index] = { ...usuarioActual };
     }
-    alert('Pago realizado correctamente');
+    alert(`Pago de tu ${planSeleccionado.name} realizado correctamente`);
   }
 
 }
