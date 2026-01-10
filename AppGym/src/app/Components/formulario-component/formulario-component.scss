@@ -88,9 +88,9 @@
   opacity: 1;
 }
 
-/* CUANDO EL USUARIO ESCRIBE → TEXTO NEGRO */
+/* CUANDO EL USUARIO ESCRIBE*/
 .campo input:not(:placeholder-shown) {
-  color: #000;
+  color: #ff1500;
 }
 
 /* Select sin seleccionar */
@@ -98,7 +98,7 @@
   color: #ff6a5c;
 }
 
-/* Select con opción elegida → TEXTO NEGRO */
+/* Select con opción elegida */
 .campo select:valid {
   color: #ff6a5c;
 }
@@ -134,7 +134,6 @@
   border-radius: 40px;
   text-shadow: none;
   box-shadow: 0px 0px 12px rgba(0,0,0,0.4);
-
   transition: 0.2s;
 }
 

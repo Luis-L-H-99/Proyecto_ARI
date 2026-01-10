@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserInterface } from '../../interfaces/UserInterface';
+
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class UserService {
     // Arreglo global de usuarios
@@ -27,7 +28,7 @@ export class UserService {
             planAsociado: undefined,
             metodoPago: undefined,
             fechaCompraPlan: undefined,
-            fechaExpiracionPlan: undefined
+            fechaExpiracionPlan: undefined,
         },
         {
             correo: 'prueba2@gmail.com',
@@ -49,17 +50,18 @@ export class UserService {
             asistencias: undefined,
             planAsociado: {
                 nombrePlan: 'Plan PowerPlus',
-                descripcionPlan: 'Pensado para personas que ya entrenan de manera regular. Incluye rutinas personalizadas por objetivo, monitoreo avanzado de oxigenación, historial de progreso y ranking por categoría (fuerza, cardio, resistencia).',
-                precioPlan: 349
+                descripcionPlan:
+                    'Pensado para personas que ya entrenan de manera regular. Incluye rutinas personalizadas por objetivo, monitoreo avanzado de oxigenación, historial de progreso y ranking por categoría (fuerza, cardio, resistencia).',
+                precioPlan: 349,
             },
             metodoPago: {
                 nombreTarjeta: 'ejemplo numero 1',
-                cvv: '123',
+                numeroTarjeta: '8282 8383 8383 8383',
                 fechaExpiracion: '01/26',
-                numeroTarjeta: '8282 8383 8383 8383'
+                cvv: '123',
             },
             fechaCompraPlan: new Date('2024-01-01'),
-            fechaExpiracionPlan: new Date('2025-01-01')
+            fechaExpiracionPlan: new Date('2025-01-01'),
         },
         {
             correo: 'prueba3@gmail.com',
@@ -84,10 +86,10 @@ export class UserService {
                         nombreVideo: 'Video 1',
                         urlVideo: 'urlVideo',
                         videoVisto: false,
-                        nombreCoach: 'Angeles'
-                    }
+                        nombreCoach: 'Angeles',
+                    },
                 ],
-                imagenRutina: 'urlImagen'
+                imagenRutina: 'urlImagen',
             },
             asistencias: [
                 {
@@ -95,42 +97,62 @@ export class UserService {
                     dia: 1,
                     mes: 0,
                     anio: 2025,
-                    tiempoCronometroSegundos: 1000
-                }
+                    tiempoCronometroSegundos: 1000,
+                },
             ],
             planAsociado: {
                 nombrePlan: 'Plan EliteAthlete',
-                descripcionPlan: 'La experiencia completa. Acceso a rutinas avanzadas exclusivas, oxigenación en tiempo real, rankings dinámicos, recomendaciones inteligentes según desempeño y sistema de logros gamificado.',
-                precioPlan: 499
+                descripcionPlan:
+                    'La experiencia completa. Acceso a rutinas avanzadas exclusivas, oxigenación en tiempo real, rankings dinámicos, recomendaciones inteligentes según desempeño y sistema de logros gamificado.',
+                precioPlan: 499,
             },
             metodoPago: {
                 nombreTarjeta: 'ejemplo numero 1',
-                cvv: '123',
+                numeroTarjeta: '8282 8383 8383 8383',
                 fechaExpiracion: '01/26',
-                numeroTarjeta: '8282 8383 8383 8383'
+                cvv: '123',
             },
             fechaCompraPlan: new Date('2025-01-01'),
-            fechaExpiracionPlan: new Date('2027-01-01')
-        }
+            fechaExpiracionPlan: new Date('2027-01-01'),
+        },
     ];
-    // Usuario logueado este es el usuario actual
+    // Usuario logueado (usuario actual)
     usuarioActual: UserInterface | null = null;
-    // obtiene todos los usuarios
-    obtenerUsuarios() {
+    // Obtener todos los usuarios
+    obtenerUsuarios(): UserInterface[] {
         return this.usuarios;
     }
-    // Busca al usuario con el que se requiere iniciar sesion
-    buscarUsuario(correo: string, contrasena: string): UserInterface | undefined {
+    // Limpiar usuario actual
+    limpiarUsuarioActual(): void {
+        this.usuarioActual = null;
+    }
+    // Buscar usuario para iniciar sesión
+    buscarUsuario(
+        correo: string,
+        contrasena: string
+    ): UserInterface | undefined {
         return this.usuarios.find(
-            usuario => usuario.correo === correo && usuario.contrasena === contrasena
+            usuario =>
+                usuario.correo === correo &&
+                usuario.contrasena === contrasena
         );
     }
-    // Esta funcion agrega un usuario nuevo al arreglo usuarios 
-    agregarUsuario(usuario: UserInterface) {
+    // Agregar un nuevo usuario
+    agregarUsuario(usuario: UserInterface): void {
         this.usuarios.push(usuario);
     }
-    // Guarda los datos para el usuario actual
-    guardarUsuarioActual(usuario: UserInterface) {
+    // Guardar usuario actual
+    guardarUsuarioActual(usuario: UserInterface): void {
         this.usuarioActual = usuario;
+    }
+    // Actualizar usuario existente
+    actualizarUsuario(usuarioActualizado: UserInterface): void {
+        const index = this.usuarios.findIndex(
+            u => u.correo === usuarioActualizado.correo
+        );
+
+        if (index !== -1) {
+            this.usuarios[index] = usuarioActualizado;
+        }
     }
 }

@@ -1,55 +1,58 @@
 <div class="registro-container">
-
-  <!-- Logo superior izquierda -->
+  <!-- Contenedor principal del formulario de registro -->
+  <!-- Logo superior izquierdo -->
   <div class="logo-container">
-    <img src="/assets/images/formulario/FitManager.png" class="logo" alt="FitManager">
+    <img src="assets/images/formulario/FitManager.png" class="logo" alt="FitManager" />
   </div>
-
+  <!-- Título -->
   <h1 class="titulo">Formulario</h1>
-
-  <form class="formulario">
-
+  <!-- Formulario -->
+  <form class="formulario" (ngSubmit)="completarRegistro()">
+    <!-- Nombre -->
     <div class="campo">
       <label>Nombre</label>
-      <input type="text" placeholder="Ingresa tu nombre:">
+      <input type="text" placeholder="Ingresa tu nombre:" [(ngModel)]="usuario.nombreUsuario" name="nombre" />
     </div>
-
+    <!-- Apellido -->
     <div class="campo">
       <label>Apellido</label>
-      <input type="text" placeholder="Ingresa tu apellido:">
+      <input type="text" placeholder="Ingresa tu apellido:" [(ngModel)]="usuario.apellidosUsuario" name="apellido" />
     </div>
-
+    <!-- Edad -->
     <div class="campo">
       <label>Edad</label>
-      <input type="number" placeholder="Ingresa tu edad:">
+      <input type="number" placeholder="Ingresa tu edad:" [(ngModel)]="usuario.edad" name="edad" />
     </div>
-
+    <!-- Estatura -->
     <div class="campo">
       <label>Estatura</label>
-      <input type="number" placeholder="Ingresa tu estatura en cm:">
+      <input type="number" placeholder="Ingresa tu estatura en cm:" [(ngModel)]="usuario.estaturaCm" name="estatura"
+        min="100" max="200" step="1" />
     </div>
-
+    <!-- Peso -->
     <div class="campo">
       <label>Peso</label>
-      <input type="number" placeholder="Ingresa tu peso, ejemplo 65.7:">
+      <input type="number" placeholder="Ingresa tu peso, ejemplo 65.7:" [(ngModel)]="usuario.peso" name="peso" />
     </div>
-
-    <!-- SELECT: Tipo de cuerpo -->
+    <!-- Tipo de cuerpo -->
     <div class="campo">
       <label>Tipo de cuerpo</label>
-      <select>
-        <option value="" disabled selected>Selecciona tu tipo de cuerpo</option>
-        <option>Delgado</option>
-        <option>Atletico</option>
-        <option>Robusto</option>
+      <select [(ngModel)]="usuario.tipoCuerpo" name="tipoCuerpo" required>
+        <option value="" disabled>
+          Selecciona tu tipo de cuerpo
+        </option>
+        <option value="Delgado">Delgado</option>
+        <option value="Atletico">Atlético</option>
+        <option value="Robusto">Robusto</option>
       </select>
     </div>
-
-    <!-- SELECT: Objetivo -->
+    <!-- Objetivo -->
     <div class="campo">
       <label>Selecciona el objetivo por el cual quieres entrar</label>
-      <select>
-        <option value="" disabled selected>Selecciona tu objetivo</option>
+      <select [(ngModel)]="usuario.objetivo" name="objetivo" required>
+        <option value="" disabled>
+          Selecciona tu objetivo
+        </option>
         <option>Subir masa muscular</option>
         <option>Perder peso / reducir grasa corporal</option>
         <option>Mejorar resistencia física</option>
@@ -62,36 +65,39 @@
         <option>Mantenerse activo</option>
       </select>
     </div>
-
-    <!-- SELECT: Frecuencia -->
+    <!-- Frecuencia -->
     <div class="campo">
       <label>Frecuencia de tu asistencia</label>
-      <select>
-        <option value="" disabled selected>Frecuencia</option>
+      <select [(ngModel)]="usuario.frecuenciaAsistencia" name="frecuencia" required>
+        <option value="" disabled>
+          Selecciona tu asistencia
+        </option>
         <option>Ocasional (1 vez por semana)</option>
         <option>Moderada (2-3 veces por semana)</option>
         <option>Constante (4-5 veces por semana)</option>
         <option>Intensa (6-7 veces por semana)</option>
       </select>
     </div>
-
-    <!-- SELECT: Alimentacion -->
+    <!-- Tipo de alimentación -->
     <div class="campo">
       <label>Tipo de alimentación</label>
-      <select>
-        <option value="" disabled selected>Alimentación</option>
-        <option>Balanceada (mezcla de todos los grupos: proteínas, carbohidratos, grasas saludables)</option>
+      <select [(ngModel)]="usuario.tipoAlimentacion" name="alimentacion" required>
+        <option value="" disabled>
+          Selecciona tu nivel de alimentación 
+        </option>
+        <option>
+          Balanceada (mezcla de todos los grupos: proteínas, carbohidratos, grasas saludables)
+        </option>
         <option>Alta en proteínas (pensada para ganar músculo)</option>
         <option>Baja en carbohidratos (keto, cetogénica o similar)</option>
         <option>Vegetariana</option>
         <option>Vegana</option>
         <option>Flexible / Sin plan específico</option>
       </select>
-      
     </div>
-
-    <!-- Boton -->
-    <button class="btn-registro">Completar registro</button>
-
+    <!-- Botón Completar registro -->
+    <button class="btn-registro" type="submit">
+      Completar registro
+    </button>
   </form>
 </div>
