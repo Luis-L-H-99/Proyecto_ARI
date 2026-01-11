@@ -12,7 +12,6 @@ import { UserInterface } from '../../../interfaces/UserInterface';
   styleUrl: './formulario-component.scss',
 })
 export class FormularioComponent implements OnInit {
-
   // Objeto usuario que se usará en el formulario
   usuario!: UserInterface;
   // Inyección de dependencias
@@ -34,9 +33,9 @@ export class FormularioComponent implements OnInit {
       this.router.navigate(['/dashboard'], { replaceUrl: true });
       return;
     }
-    /*Se clona el usuario actual y se inicializan los campos
-      de los <select> con string vacío ('') para que Angular
-      muestre correctamente la opción inicial (placeholder).*/
+    /* Se clona el usuario actual y se inicializan los campos
+       de los <select> con string vacío ('') para que Angular
+       muestre correctamente la opción inicial (placeholder). */
     this.usuario = {
       ...usuarioActual,
       tipoCuerpo: usuarioActual.tipoCuerpo ?? '',
@@ -47,38 +46,42 @@ export class FormularioComponent implements OnInit {
   }
   // Método que se ejecuta al enviar el formulario
   completarRegistro(): void {
+    // Normalizar valores para evitar undefined (TypeScript strict)
+    const nombre = this.usuario.nombreUsuario ?? '';
+    const apellido = this.usuario.apellidosUsuario ?? '';
+    const estatura = this.usuario.estaturaCm ?? 0;
     // Validación: todos los campos son obligatorios
     if (
-      !this.usuario.nombreUsuario ||
-      !this.usuario.apellidosUsuario ||
+      !nombre ||
+      !apellido ||
       !this.usuario.edad ||
-      !this.usuario.estaturaCm ||
+      !estatura ||
       !this.usuario.peso ||
       !this.usuario.tipoCuerpo ||
       !this.usuario.objetivo ||
       !this.usuario.frecuenciaAsistencia ||
       !this.usuario.tipoAlimentacion
     ) {
-      alert('Todos los campos son obligatorios');
+      this.resaltarCamposVacios();
       return;
     }
     // Expresión regular para permitir solo letras y espacios
     const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     // Validar que nombre y apellido no contengan números
     if (
-      !soloLetras.test(this.usuario.nombreUsuario) ||
-      !soloLetras.test(this.usuario.apellidosUsuario)
+      !soloLetras.test(nombre) ||
+      !soloLetras.test(apellido)
     ) {
-      alert('Nombre y apellido no deben contener números');
+      this.enfocarCampoPorNombre('nombre');
       return;
     }
     // Validar estatura: número entero entre 100 y 200 cm
     if (
-      !Number.isInteger(this.usuario.estaturaCm) ||
-      this.usuario.estaturaCm < 100 ||
-      this.usuario.estaturaCm > 200
+      !Number.isInteger(estatura) ||
+      estatura < 100 ||
+      estatura > 200
     ) {
-      alert('La estatura debe ser un número entero entre 100 y 200 cm');
+      this.enfocarCampoPorNombre('estatura');
       return;
     }
     // Marcar el registro como completado
@@ -88,5 +91,53 @@ export class FormularioComponent implements OnInit {
     this.userService.actualizarUsuario(this.usuario);
     // Redirigir al dashboard y evitar volver al formulario
     this.router.navigate(['/dashboard'], { replaceUrl: true });
+  }
+  /* Recorre TODOS los campos y anima
+     únicamente los que están vacíos */
+  private resaltarCamposVacios(): void {
+    const campos = document.querySelectorAll('.campo-validable');
+    let primerCampoInvalido: Element | null = null;
+
+    campos.forEach(campo => {
+      const control = campo.querySelector('input, select') as HTMLInputElement | null;
+
+      if (control && !control.value) {
+        // Guardar el primer campo vacío
+        if (!primerCampoInvalido) {
+          primerCampoInvalido = campo;
+        }
+
+        // Animar todos los campos vacíos
+        this.animarCampo(campo);
+      }
+    });
+    // Hacer scroll SOLO al primer campo inválido
+    if (primerCampoInvalido) {
+      (primerCampoInvalido as HTMLElement).scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }
+  // Enfoca un campo específico por el atributo name
+  private enfocarCampoPorNombre(nombre: string): void {
+    const campo = document
+      .querySelector(`[name="${nombre}"]`)
+      ?.closest('.campo-validable');
+
+    if (campo) {
+      this.animarCampo(campo);
+    }
+  }
+  // Aplica la clase de error de forma temporal
+  private animarCampo(campo: Element): void {
+    // Reinicia la animación si ya existía
+    campo.classList.remove('campo-error');
+    void (campo as HTMLElement).offsetWidth;
+    campo.classList.add('campo-error');
+
+    setTimeout(() => {
+      campo.classList.remove('campo-error');
+    }, 1300);
   }
 }
